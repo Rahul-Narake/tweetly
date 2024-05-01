@@ -1,0 +1,89 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User{
+  id Int @id @default(autoincrement())
+  name String
+  email String @unique
+  phone String? @unique
+  username String? @unique
+  password String 
+  dob DateTime 
+  isVerified Boolean @default(false)
+  verificationCode String?
+  verificationCodeExpiry DateTime?
+  created_at DateTime @default(now()) @db.Timestamp(0)
+  posts Post[]
+  likes Like[]
+  comments Comment[]
+  bookmarks Bookmark[]
+  followers Follower[]
+  following Following[]
+}
+
+model Post{
+  id Int @id @default(autoincrement())
+  title String?
+  content String
+  image String?
+  userId Int 
+  user User @relation(fields: [userId],references: [id])
+  likes Like[]
+  comments Comment[]
+  bookmarks Bookmark[]
+  createdAt DateTime @default(now())
+  updated DateTime @updatedAt
+}
+
+model Like{
+  id Int @id @default(autoincrement())
+  userId Int
+  user User @relation(fields: [userId],references: [id])
+  postId Int 
+  post Post @relation(fields: [postId],references: [id])
+  createdAt DateTime @default(now())
+}
+
+model Comment{
+  id Int @id @default(autoincrement())
+  content String
+  userId Int
+  user User @relation(fields: [userId],references: [id])
+  postId Int
+  post Post @relation(fields: [postId],references: [id])
+  createdAt DateTime @default(now())
+}
+
+
+model Bookmark{
+  id Int @id @default(autoincrement())
+  userId Int
+  user User @relation(fields: [userId],references: [id])
+  postId Int 
+  post Post @relation(fields: [postId],references: [id])
+  createdAt DateTime @default(now())
+}
+
+model Follower {
+  id         Int      @id @default(autoincrement()) 
+  userId     Int
+  follower   User     @relation(fields: [followerId], references: [id])
+  followerId Int
+}
+
+model Following {
+  id         Int      @id @default(autoincrement())
+  userId     Int
+  following  User     @relation(fields: [followingId], references: [id])
+  followingId Int
+}
+
+
+
