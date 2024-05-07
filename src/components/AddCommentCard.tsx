@@ -58,7 +58,7 @@ export function AddComment({ post }: { post: Post }) {
     <>
       <div className="grid grid-cols-12">
         <div className="flex col-span-1 col-start-1">
-          <ProfileAvatar src={post?.user?.image} name={post?.user?.name} />
+          <ProfileAvatar src={post?.user?.profile} name={post?.user?.name} />
         </div>
         <div className="flex flex-col col-span-11 col-start-2">
           <PostHeader
@@ -75,7 +75,7 @@ export function AddComment({ post }: { post: Post }) {
       </div>
       <div className="grid grid-cols-12 gap-4">
         <div className="flex col-span-1 col-start-1">
-          <ProfileAvatar src={post?.user?.image} name={post?.user?.name} />
+          <ProfileAvatar src={post?.user?.profile} name={post?.user?.name} />
         </div>
         <div className="flex flex-col col-span-11 col-start-2">
           <Textarea
