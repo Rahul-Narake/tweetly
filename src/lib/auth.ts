@@ -30,6 +30,7 @@ export const authOptions = {
               name: true,
               email: true,
               isVerified: true,
+              profile: true,
             },
           });
           if (
@@ -42,6 +43,7 @@ export const authOptions = {
               id: user.id,
               name: user.name,
               email: credentials.username,
+              image: user?.profile,
             };
           }
         } catch (error: any) {

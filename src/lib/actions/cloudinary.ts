@@ -22,40 +22,67 @@ export async function getSignature() {
   return { timestamp, signature };
 }
 
-export async function saveToDatabase({
+export async function checkSignuature({
   public_id,
   version,
   signature,
-  secure_url,
-  postId,
 }: {
   public_id: string;
   version: string;
   signature: string;
-  secure_url: string;
-  postId: number;
 }) {
-  const session = await getServerSession(authOptions);
   const expectedSignature = cloudinary.utils.api_sign_request(
     { public_id, version },
     cloudinaryConfig.api_secret || ''
   );
 
   if (expectedSignature === signature) {
-    try {
-      const updatedPost = await prisma.post.update({
-        where: { id: postId, userId: Number(session?.user?.id) },
-        data: { image: secure_url },
-      });
-      if (updatedPost) {
-        return { message: 'post created successfully', success: true };
-      } else {
-        return { message: 'Error in post save to db', success: false };
-      }
-    } catch (error: any) {
-      return { message: error.message, success: false };
-    }
+    return true;
   } else {
-    return { message: 'Invalid request', success: false };
+    return false;
+  }
+}
+
+export async function savePostURLTODB({
+  postId,
+  secure_url,
+}: {
+  postId: number;
+  secure_url: string;
+}) {
+  try {
+    const session = await getServerSession(authOptions);
+    const updatedPost = await prisma.post.update({
+      where: { id: postId, userId: Number(session?.user?.id) },
+      data: { image: secure_url },
+    });
+    if (updatedPost) {
+      return { message: 'post created successfully', success: true };
+    } else {
+      return { message: 'Error in post save to db', success: false };
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function saveProfileURLTODB({
+  secure_url,
+}: {
+  secure_url: string;
+}) {
+  try {
+    const session = await getServerSession(authOptions);
+    const updatedUser = await prisma.user.update({
+      where: { id: Number(session?.user?.id) },
+      data: { profile: secure_url },
+    });
+    if (updatedUser) {
+      return { message: 'Profile Updated successfully', success: true };
+    } else {
+      return { message: 'Error in Profile save to db', success: false };
+    }
+  } catch (error) {
+    console.log(error);
   }
 }

@@ -41,6 +41,8 @@ export async function getUsersLikedPost(userId: number): Promise<Post[]> {
             email: true,
             followers: true,
             following: true,
+            posts: { select: { id: true } },
+            profile: true,
           },
         },
       },

@@ -9,6 +9,6 @@ export default function Dashboard() {
   if (!session?.data?.user) {
     router.push('/api/auth/signin');
   } else {
-    router.push('/home');
+    router.push('/posts/for_you');
   }
 }

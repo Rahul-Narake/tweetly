@@ -1,3 +1,5 @@
+import InProgress from '@/components/InProgress';
+
 export default function GrokPage() {
-  return <div>grok</div>;
+  return <InProgress />;
 }

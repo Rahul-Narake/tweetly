@@ -18,11 +18,8 @@ export default async function HomeLayout({
       <div className="md:flex md:col-span-2 md:col-start-2 hidden">
         <Sidebar />
       </div>
-      <div className=" md:block md:col-span-6 md:col-start-4 border-x border-slate-600 flex flex-col">
-        <div className="sm:hidden flex">
-          <MobileNavbar />
-        </div>
-        <div className="overflow-y-scroll scroll-smooth h-[100vh] pb-2 w-full">
+      <div className="md:col-span-6 md:col-start-4 border-x border-slate-600 flex flex-col">
+        <div className="overflow-y-scroll scroll-smooth h-[100vh] pb-2">
           {children}
         </div>
       </div>

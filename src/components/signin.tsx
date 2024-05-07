@@ -14,6 +14,7 @@ export function Signin() {
     emailReq: false,
     passReq: false,
   });
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const email = useRef('');
   const password = useRef('');
@@ -32,15 +33,15 @@ export function Signin() {
       });
       return;
     }
-
+    setLoading(true);
     const res = await signIn('credentials', {
       username: email.current,
       password: password.current,
       redirect: false,
     });
-
+    setLoading(false);
     if (!res?.error) {
-      router.push('/home');
+      router.push('/posts/for_you');
     } else {
       toast('Error Signing in', {
         action: {
@@ -159,7 +160,7 @@ export function Signin() {
                 handleSubmit();
               }}
             >
-              Signin
+              {loading ? 'please wait' : 'Signin'}
             </Button>
           </div>
           <div className="flex mt-4">

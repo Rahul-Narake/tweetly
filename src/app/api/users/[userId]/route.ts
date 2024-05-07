@@ -8,23 +8,27 @@ export async function GET(
   { params }: { params: { userId: string } }
 ) {
   try {
-    // const session = await getServerSession(authOptions);
-    // if (!session?.user) {
-    //   return NextResponse.json(
-    //     { message: 'Unauthenticated', success: false },
-    //     { status: 403 }
-    //   );
-    // }
+    const session = await getServerSession(authOptions);
+    if (!session?.user) {
+      return NextResponse.json(
+        { message: 'Unauthenticated', success: false },
+        { status: 403 }
+      );
+    }
     const user = await prisma.user.findFirst({
-      where: { id: Number(params.userId) },
+      where: { id: Number(session?.user?.id) },
       select: {
         id: true,
         name: true,
         email: true,
-        username: true,
-        posts: true,
+        dob: true,
         followers: true,
         following: true,
+        bio: true,
+        profile: true,
+        bookmarks: {
+          select: { id: true, createdAt: true, postId: true, userId: true },
+        },
       },
     });
 

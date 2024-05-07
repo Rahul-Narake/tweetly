@@ -13,15 +13,16 @@ export function ProfileTab({
   const pathName = usePathname();
 
   return (
-    <div
-      className={`${
-        path.replace('/', '') === pathName
-          ? 'border-b-1 border-blue-400 text-slate-300 cursor-pointer'
-          : 'text-slate-300 cursor-pointer'
-      }`}
-      onClick={onclick}
-    >
-      <p>{title}</p>
+    <div onClick={onclick}>
+      <p
+        className={`${
+          path === pathName
+            ? ' text-blue-700 cursor-pointer'
+            : 'text-slate-300 cursor-pointer'
+        }`}
+      >
+        {title}
+      </p>
     </div>
   );
 }

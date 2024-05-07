@@ -4,28 +4,29 @@ import { ProfileTab } from './ProfileTab';
 
 export function ProfileTabs({ userId }: { userId: number }) {
   const router = useRouter();
+
   return (
     <div className="flex justify-around mt-4 border-b-[1px] border-slate-400 pb-4">
       <ProfileTab
         title="posts"
         onclick={() => {
-          router.push(`/${userId}/posts`);
+          router.push(`/profile/${userId}/posts`);
         }}
-        path={`/${userId}`}
+        path={`/profile/${userId}/posts`}
       />
       <ProfileTab
         title="Replies"
         onclick={() => {
-          router.push(`/${userId}/replies`);
+          router.push(`/profile/${userId}/replies`);
         }}
-        path={`/${userId}`}
+        path={`/profile/${userId}/replies`}
       />
       <ProfileTab
         title="Likes"
         onclick={() => {
-          router.push(`/${userId}/likes`);
+          router.push(`/profile/${userId}/likes`);
         }}
-        path={`/${userId}`}
+        path={`/profile/${userId}/likes`}
       />
     </div>
   );

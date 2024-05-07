@@ -6,7 +6,11 @@ import { Input } from './ui/input';
 import { Button } from './ui/button';
 import { toast } from 'sonner';
 import axios from 'axios';
-import { getSignature, saveToDatabase } from '@/lib/actions/cloudinary';
+import {
+  checkSignuature,
+  getSignature,
+  savePostURLTODB,
+} from '@/lib/actions/cloudinary';
 import { useRouter } from 'next/navigation';
 export function ComposePost() {
   const [image, setImage] = useState<File | null>(null);
@@ -16,11 +20,9 @@ export function ComposePost() {
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       if (e.target.files[0].size > 1024 * 1000) {
-        setImage(null);
         toast('Image size or type not accepted', {
           action: { label: 'Close', onClick: () => toast.dismiss() },
         });
-
         return;
       } else {
         setImage(e.target.files[0]);
@@ -44,7 +46,6 @@ export function ComposePost() {
           try {
             const { timestamp, signature } = await getSignature();
             const formData = new FormData();
-
             formData.append('file', image);
             formData.append(
               'api_key',
@@ -58,19 +59,27 @@ export function ComposePost() {
             );
             const { data: data1 } = await axios.post(endpoint, formData);
             if (data1.public_id) {
-              const response = await saveToDatabase({
+              const isValid = await checkSignuature({
                 version: data1?.version,
                 signature: data1?.signature,
                 public_id: data1?.public_id,
-                secure_url: data1?.secure_url,
-                postId: Number(data?.postId),
               });
-              toast(response?.message, {
-                action: { label: 'close', onClick: () => toast.dismiss() },
-              });
-              setLoading(false);
-              if (response.success) {
-                router.push('/home');
+              if (isValid) {
+                const response = await savePostURLTODB({
+                  postId: data?.postId,
+                  secure_url: data1?.secure_url,
+                });
+                setLoading(false);
+                toast(response?.message, {
+                  action: { label: 'close', onClick: () => toast.dismiss() },
+                });
+                if (response?.success) {
+                  router.push('/posts/for_you');
+                }
+              } else {
+                toast('Error in upload photo', {
+                  action: { label: 'close', onClick: () => toast.dismiss() },
+                });
               }
             }
           } catch (error: any) {

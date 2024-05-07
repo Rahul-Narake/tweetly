@@ -43,7 +43,7 @@ export function PostHeader({
     <div
       className="flex items-start cursor-pointer"
       onClick={() => {
-        router.push(`/${userId}`);
+        router.push(`/profile/${userId}/posts`);
       }}
     >
       <h3 className="text-md font-semibold mr-2">{name}</h3>

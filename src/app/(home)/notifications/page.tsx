@@ -1,3 +1,5 @@
+import InProgress from '@/components/InProgress';
+
 export default function NotificationPage() {
-  return <div>notifications</div>;
+  return <InProgress />;
 }

@@ -13,6 +13,8 @@ export async function getUserData(userId: number): Promise<User | null> {
         name: true,
         email: true,
         dob: true,
+        bio: true,
+        profile: true,
         followers: true,
         following: true,
         posts: {
@@ -29,10 +31,19 @@ export async function getUserData(userId: number): Promise<User | null> {
   }
 }
 
-export async function getUsersPost(userId: number): Promise<Post[]> {
+export async function getUsersPost({
+  userId,
+  page = 1,
+}: {
+  userId: number;
+  page?: number;
+}): Promise<Post[]> {
   try {
     const session = await getServerSession(authOptions);
+    const skip = (page - 1) * 3;
     const posts = await prisma.post.findMany({
+      skip,
+      take: 3,
       where: { userId },
       select: {
         id: true,
@@ -58,6 +69,8 @@ export async function getUsersPost(userId: number): Promise<Post[]> {
             email: true,
             followers: true,
             following: true,
+            posts: { select: { id: true } },
+            profile: true,
           },
         },
       },

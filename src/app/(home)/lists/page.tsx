@@ -1,3 +1,5 @@
+import InProgress from '@/components/InProgress';
+
 export default function ListsPage() {
-  return <div>list</div>;
+  return <InProgress />;
 }

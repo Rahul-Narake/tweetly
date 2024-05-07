@@ -16,6 +16,8 @@ export async function getUserData(userId: number): Promise<User | null> {
         dob: true,
         followers: true,
         following: true,
+        bio: true,
+        profile: true,
         posts: {
           select: {
             id: true,
@@ -36,7 +38,7 @@ export async function Profile({ userId }: { userId: number }) {
   return (
     <div className="flex flex-col w-full">
       <ProfileHeader name={user?.name || ''} posts={user?.posts.length || 1} />
-      <ProfileImageSection userId={userId} />
+      <ProfileImageSection userId={userId} user={user} />
       <ProfileContent user={user} />
       <ProfileTabs userId={userId} />
     </div>

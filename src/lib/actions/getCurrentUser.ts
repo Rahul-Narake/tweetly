@@ -17,13 +17,16 @@ export async function getCurrentUser(): Promise<CurrentUser | null> {
         name: true,
         email: true,
         dob: true,
-        followers: true,
-        following: true,
+        followers: { select: { id: true, userId: true, followerId: true } },
+        following: { select: { id: true, userId: true, followingId: true } },
+        bio: true,
+        profile: true,
         bookmarks: {
           select: { id: true, createdAt: true, postId: true, userId: true },
         },
       },
     });
+
     return user;
   } catch (error) {
     return null;

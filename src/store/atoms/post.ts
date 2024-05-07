@@ -8,8 +8,11 @@ export type User = {
   id: number;
   name: string;
   email: string;
+  bio?: string | null;
+  profile?: string | null;
   followers: Follower[];
   following: Following[];
+  posts: { id: number }[];
 };
 
 export type Comment = {
@@ -56,6 +59,8 @@ export type CurrentUser = {
   email: string;
   image?: string;
   username?: string;
+  profile?: string | null;
+  bio?: string | null;
   dob: Date;
   followers: Follower[];
   following: Following[];
@@ -80,7 +85,7 @@ const currentUserSelector = selector({
 
 export const postsAtom = atom<Post[]>({
   key: 'postsAtom',
-  default: forYouPostSelector,
+  default: [],
 });
 
 export const postTypeAtom = atom({ key: 'postTypeAtom', default: 'for_you' });

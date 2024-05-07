@@ -73,6 +73,8 @@ export async function GET(req: NextRequest) {
             id: true,
             name: true,
             email: true,
+            bio: true,
+            profile: true,
           },
         },
       },

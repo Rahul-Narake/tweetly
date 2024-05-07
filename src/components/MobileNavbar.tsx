@@ -1,10 +1,12 @@
-'use client';
+import { getCurrentUser } from '@/lib/actions/getCurrentUser';
+import { MobileSidebar } from './MobileSidebar';
 
-export function MobileNavbar() {
+export async function MobileNavbar() {
+  const currentUser = await getCurrentUser();
   return (
-    <div className="flex justify-between w-full px-2 py-1">
-      <button>profile</button>
-      <div>X</div>
+    <div className="flex justify-between items-center w-full px-4 py-1 h-12">
+      <MobileSidebar user={currentUser} />
+      <h1 className="text-xl font-bold text-slate-200">X</h1>
     </div>
   );
 }

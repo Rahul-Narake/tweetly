@@ -9,29 +9,34 @@ export async function handleFollowUnfollow(userId: number) {
     const isFollowing = await prisma.following.findFirst({
       where: { userId: Number(session?.user?.id), followingId: userId },
     });
+    console.log('checking isfollowing');
+    console.log(isFollowing);
     if (isFollowing) {
+      console.log('following already');
       await prisma.$transaction(async (tr) => {
         await tr.following.delete({
           where: { id: isFollowing?.id },
         });
         await tr.follower.deleteMany({
-          where: { userId, followerId: session?.user.id },
+          where: { userId, followerId: Number(session?.user.id) },
         });
-        return { success: true, message: 'Unfollowed successfully' };
       });
+      return { success: true, message: 'Unfollowed successfully' };
     } else {
+      console.log('not following');
       await prisma.$transaction(async (tr) => {
         const followed = await tr.following.create({
-          data: { userId: session?.user?.id, followingId: userId },
+          data: { userId: Number(session?.user?.id), followingId: userId },
         });
-
+        console.log(followed);
         if (followed) {
-          await tr.follower.create({
-            data: { userId, followerId: session?.user?.id },
+          const follower = await tr.follower.create({
+            data: { userId, followerId: Number(session?.user?.id) },
           });
-          return { success: true, message: 'Followed successfully' };
+          console.log(follower);
         }
       });
+      return { success: true, message: 'Followed successfully' };
     }
   } catch (error: any) {
     console.log(error);

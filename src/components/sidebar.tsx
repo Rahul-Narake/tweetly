@@ -21,7 +21,7 @@ export async function Sidebar() {
   return (
     <div className="flex flex-col space-y-6 w-full pr-2">
       <Logo width="12" height="12" />
-      <SidebarComponent title="Home" icon={<Home />} path="/home" />
+      <SidebarComponent title="Home" icon={<Home />} path="/posts/for_you" />
       <SidebarComponent title="Explore" icon={<Search />} path="/explore" />
       <SidebarComponent
         title="Notifications"
@@ -35,7 +35,7 @@ export async function Sidebar() {
       <SidebarComponent
         title="Profile"
         icon={<UserRound />}
-        path={`/${session?.user?.id}`}
+        path={`/profile/${session?.user?.id}/posts`}
       />
       <SidebarComponent title="More" icon={<CircleEllipsis />} path="/more" />
       <ComposePostButton />
