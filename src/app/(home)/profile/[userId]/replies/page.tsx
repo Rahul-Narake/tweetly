@@ -1,11 +1,11 @@
 import { PostsList } from '@/components/PostsList';
-import { getUsersPost } from '@/lib/actions/getUserData';
+import { getRepliedPosts } from '@/lib/actions/getPosts';
 
-export default async function UsersReply({
+export default async function UserRepliedPosts({
   params,
 }: {
-  params: { userId: string };
+  params: { userId: String };
 }) {
-  const posts = await getUsersPost(Number(params.userId));
+  const posts = await getRepliedPosts({ userId: Number(params.userId) });
   return <PostsList posts={posts} />;
 }

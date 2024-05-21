@@ -23,11 +23,12 @@ export function FollowUnfollowButton({
     return false;
   };
   const [following, setFollowing] = useState(isFollowing());
+  console.log(user);
+  console.log(currentUser);
   return (
     <div
       onClick={async () => {
         const resp = await handleFollowUnfollow(Number(user?.id));
-        console.log(resp);
         if (resp?.success) {
           setFollowing((fw) => !fw);
         }

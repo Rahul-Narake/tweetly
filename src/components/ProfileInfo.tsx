@@ -12,10 +12,9 @@ import { ProfileAvatar } from './ProfileAvatar';
 
 export function ProfileComponent() {
   const session = useSession();
-
   const router = useRouter();
   return (
-    <div className="flex flex-wrap items-center justify-evenly hover:bg-slate-800 hover:cursor-pointer w-full p-2 hover:rounded-full">
+    <div className="flex flex-wrap items-center justify-evenly hover:bg-slate-800  w-full p-2 hover:rounded-full">
       <ProfileAvatar
         src={session?.data?.user?.image}
         name={session?.data?.user?.name || ''}

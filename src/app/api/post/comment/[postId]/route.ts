@@ -49,3 +49,52 @@ export async function POST(
     throw new Error(error?.message);
   }
 }
+
+export async function GET(
+  req: NextRequest,
+  { params }: { params: { postId: string } }
+) {
+  try {
+    const session = await getServerSession(authOptions);
+    if (!session?.user) {
+      return NextResponse.json(
+        { message: 'Unauthenticated', success: false },
+        { status: 403 }
+      );
+    }
+    const postId = Number(params.postId);
+    const page = Number(req.nextUrl.searchParams.get('page')) || 1;
+    const skip = (page - 1) * 3;
+    const isLast =
+      Math.round(
+        (await prisma.comment.findMany({ where: { postId } })).length / 3
+      ) === page
+        ? true
+        : false;
+
+    const comments = await prisma.comment.findMany({
+      where: { postId },
+      skip,
+      take: 3,
+      select: {
+        content: true,
+        createdAt: true,
+        id: true,
+        user: { select: { id: true, name: true, profile: true } },
+      },
+    });
+
+    return NextResponse.json({
+      message: 'Comments fetched successfully',
+      success: true,
+      comments,
+      isLast,
+    });
+  } catch (error) {
+    console.log(error);
+    return NextResponse.json(
+      { message: 'Error in getting comments', success: false },
+      { status: 500 }
+    );
+  }
+}

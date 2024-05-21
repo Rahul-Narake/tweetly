@@ -1,50 +1,14 @@
-'use server';
+import PostComponent from '@/components/PostComponent';
 import prisma from '@/db';
-import { Post, User } from '@/store/atoms/post';
+import { authOptions } from '@/lib/auth';
+import { Post } from '@/store/atoms/post';
 import { getServerSession } from 'next-auth';
-import { authOptions } from '../auth';
 
-export async function getUserData(userId: number): Promise<User | null> {
-  try {
-    const user = await prisma.user.findUnique({
-      where: { id: userId },
-      select: {
-        id: true,
-        name: true,
-        email: true,
-        dob: true,
-        bio: true,
-        profile: true,
-        followers: true,
-        following: true,
-        posts: {
-          select: {
-            id: true,
-          },
-        },
-      },
-    });
-    return user;
-  } catch (err: any) {
-    console.log(err);
-    return null;
-  }
-}
-
-export async function getUsersPost({
-  userId,
-  page = 1,
-}: {
-  userId: number;
-  page?: number;
-}): Promise<Post[]> {
+export async function getPost(postId: number): Promise<Post | null> {
   try {
     const session = await getServerSession(authOptions);
-    const skip = (page - 1) * 3;
-    const posts = await prisma.post.findMany({
-      skip,
-      take: 3,
-      where: { userId },
+    const post = await prisma.post.findUnique({
+      where: { id: postId },
       select: {
         id: true,
         title: true,
@@ -67,23 +31,21 @@ export async function getUsersPost({
             id: true,
             name: true,
             email: true,
-            followers: { where: { followingId: userId } },
-            following: { where: { followerId: userId } },
+            followers: true,
+            following: true,
             posts: { select: { id: true } },
             profile: true,
           },
         },
       },
     });
-
-    const postsWithIsLiked = posts.map((post) => {
+    if (post) {
       const isLiked = post.likes.some(
         (like) => like.userId === Number(session?.user?.id)
       );
       const isBookmarked = post.bookmarks.some(
         (bookmark) => bookmark.userId === Number(session?.user?.id)
       );
-
       return {
         ...post,
         isLiked,
@@ -91,11 +53,19 @@ export async function getUsersPost({
         likesCount: post?.likes?.length,
         bookmarksCount: post?.bookmarks.length,
       };
-    });
-
-    return postsWithIsLiked;
+    }
+    return null;
   } catch (error) {
     console.log(error);
-    return [];
+    return null;
   }
+}
+
+export default async function PostPage({
+  params,
+}: {
+  params: { postId: string };
+}) {
+  const post = await getPost(Number(params.postId));
+  return <PostComponent post={post} />;
 }

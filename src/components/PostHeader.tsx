@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 
-function getTimeDifference(timeString: Date): string {
+export function getTimeDifference(timeString: Date): string {
   const inputDate = new Date(timeString);
   const currentDate = new Date();
 
@@ -46,7 +46,7 @@ export function PostHeader({
         router.push(`/profile/${userId}/posts`);
       }}
     >
-      <h3 className="text-md font-semibold mr-2">{name}</h3>
+      <h3 className="text-md font-semibold mr-2 cursor-pointer">{name}</h3>
       <p className="text-sm text-slate-600 mr-2">{email}</p>
       <p className="textsm text-slate-600">{getTimeDifference(time)}</p>
     </div>

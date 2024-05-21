@@ -26,8 +26,8 @@ model User{
   likes Like[]
   comments Comment[]
   bookmarks Bookmark[]
-  followers Follower[]
-  following Following[]
+  followers Follows[] @relation("follower")
+  following Follows[] @relation("following")
 }
 
 model Post{
@@ -73,18 +73,26 @@ model Bookmark{
   createdAt DateTime @default(now())
 }
 
-model Follower {
-  id         Int      @id @default(autoincrement()) 
-  userId     Int
-  follower   User     @relation(fields: [followerId], references: [id])
-  followerId Int
-}
+// model Follower {
+//   id         Int      @id @default(autoincrement()) 
+//   userId     Int
+//   follower   User     @relation(fields: [followerId], references: [id])
+//   followerId Int
+// }
 
-model Following {
-  id         Int      @id @default(autoincrement())
-  userId     Int
-  following  User     @relation(fields: [followingId], references: [id])
-  followingId Int
+// model Following {
+//   id         Int      @id @default(autoincrement())
+//   userId     Int
+//   following  User     @relation(fields: [followingId], references: [id])
+//   followingId Int
+// }
+
+model Follows {
+id Int @id @default(autoincrement())
+followerId  Int
+follower    User @relation("follower", fields: [followerId], references: [id])
+followingId Int
+following   User @relation("following", fields: [followingId], references: [id]) 
 }
 
 

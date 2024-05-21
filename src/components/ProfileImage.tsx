@@ -226,7 +226,7 @@ export function ProfileImageSection({
           <div className="flex justify-evenly space-x-4">
             <Dialog>
               <DialogTrigger className="border-1 border-slate-300 rounded-full cursor-pointer bg-gray-600 px-2 py-1">
-                Edit Profile
+                Edit
               </DialogTrigger>
 
               <DialogContent>

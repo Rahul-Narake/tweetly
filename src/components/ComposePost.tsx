@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import React, { ChangeEvent } from 'react';
 import { Textarea } from './ui/textarea';
 import { Input } from './ui/input';
@@ -12,30 +12,50 @@ import {
   savePostURLTODB,
 } from '@/lib/actions/cloudinary';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 export function ComposePost() {
   const [image, setImage] = useState<File | null>(null);
   const [content, setContent] = useState('');
   const [loading, setLoading] = useState(false);
+  const [file, setFile] = useState<string | null>(null);
   const router = useRouter();
+
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      if (e.target.files[0].size > 1024 * 1000) {
+    const file = e.target.files?.[0];
+    if (file) {
+      if (file.size > 1024 * 1000) {
         toast('Image size or type not accepted', {
           action: { label: 'Close', onClick: () => toast.dismiss() },
         });
+        setImage(null);
+        setFile(null);
         return;
       } else {
-        setImage(e.target.files[0]);
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setFile(reader.result as string);
+        };
+        reader.readAsDataURL(file);
+        if (file) setImage(file);
       }
+    } else {
+      setImage(null);
+      setFile(null);
     }
+  };
+
+  const handleRemoveClick = () => {
+    setImage(null);
+    setFile(null);
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLButtonElement>) => {
     if (e) {
       e.preventDefault();
     }
-    setLoading(true);
+
     try {
+      setLoading(true);
       if (content.length === 0) {
         return;
       }
@@ -73,9 +93,6 @@ export function ComposePost() {
                 toast(response?.message, {
                   action: { label: 'close', onClick: () => toast.dismiss() },
                 });
-                if (response?.success) {
-                  router.push('/posts/for_you');
-                }
               } else {
                 toast('Error in upload photo', {
                   action: { label: 'close', onClick: () => toast.dismiss() },
@@ -96,7 +113,6 @@ export function ComposePost() {
               action: { label: 'Close', onClick: () => toast.dismiss() },
             });
             setLoading(false);
-            router.push('/home');
             return;
           }
         }
@@ -128,12 +144,26 @@ export function ComposePost() {
             }}
             placeholder="What is happening?"
           />
+
           <Input
             type="file"
             name="image"
             id="image"
             onChange={onChangeHandler}
           />
+
+          {file && (
+            <div className="mt-2 relative">
+              <Image src={file} alt="Preview" width={500} height={500} />
+              <button
+                onClick={handleRemoveClick}
+                className="absolute top-0 right-0 bg-red-500 text-white py-1 px-2"
+                aria-label="Remove image"
+              >
+                X
+              </button>
+            </div>
+          )}
         </div>
 
         <Button

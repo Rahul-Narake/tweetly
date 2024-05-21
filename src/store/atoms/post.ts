@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { atom, selector } from 'recoil';
+import { number } from 'zod';
 export type UserPost = {
   id: number;
 };
@@ -10,8 +11,8 @@ export type User = {
   email: string;
   bio?: string | null;
   profile?: string | null;
-  followers: Follower[];
-  following: Following[];
+  followers: Follow[];
+  following: Follow[];
   posts: { id: number }[];
 };
 
@@ -36,16 +37,16 @@ export type Post = {
   comments: Comment[];
 };
 
-export type Follower = {
+export type Follow = {
   id: number;
-  userId: number;
   followerId: number;
-};
-export type Following = {
-  id: number;
-  userId: number;
   followingId: number;
 };
+// export type Following = {
+//   id: number;
+//   userId: number;
+//   followingId: number;
+// };
 export type Bookmark = {
   id: number;
   userId: number;
@@ -62,8 +63,8 @@ export type CurrentUser = {
   profile?: string | null;
   bio?: string | null;
   dob: Date;
-  followers: Follower[];
-  following: Following[];
+  followers: Follow[];
+  following: Follow[];
   bookmarks: Bookmark[];
 };
 

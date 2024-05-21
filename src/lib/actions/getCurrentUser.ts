@@ -17,8 +17,14 @@ export async function getCurrentUser(): Promise<CurrentUser | null> {
         name: true,
         email: true,
         dob: true,
-        followers: { select: { id: true, userId: true, followerId: true } },
-        following: { select: { id: true, userId: true, followingId: true } },
+        followers: {
+          where: { followingId: Number(session?.user?.id) },
+          select: { id: true, followingId: true, followerId: true },
+        },
+        following: {
+          where: { followerId: Number(session?.user?.id) },
+          select: { id: true, followerId: true, followingId: true },
+        },
         bio: true,
         profile: true,
         bookmarks: {
@@ -26,7 +32,7 @@ export async function getCurrentUser(): Promise<CurrentUser | null> {
         },
       },
     });
-
+    console.log(user);
     return user;
   } catch (error) {
     return null;

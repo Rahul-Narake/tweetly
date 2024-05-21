@@ -23,7 +23,9 @@ export default async function HomeLayout({
           {children}
         </div>
       </div>
-      <div className="md:flex md:col-span-2 md:col-start-10 hidden">ad</div>
+      <div className="md:flex md:col-span-2 md:col-start-10 hidden md:flex-col p-2">
+        <p>Adverties</p>
+      </div>
     </div>
   );
 }
