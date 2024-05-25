@@ -32,7 +32,7 @@ export async function getCurrentUser(): Promise<CurrentUser | null> {
         },
       },
     });
-    console.log(user);
+
     return user;
   } catch (error) {
     return null;

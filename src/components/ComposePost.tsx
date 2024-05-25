@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import React, { ChangeEvent } from 'react';
 import { Textarea } from './ui/textarea';
 import { Input } from './ui/input';
@@ -11,42 +11,53 @@ import {
   getSignature,
   savePostURLTODB,
 } from '@/lib/actions/cloudinary';
-import { useRouter } from 'next/navigation';
-import Image from 'next/image';
+
 export function ComposePost() {
   const [image, setImage] = useState<File | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [content, setContent] = useState('');
   const [loading, setLoading] = useState(false);
-  const [file, setFile] = useState<string | null>(null);
-  const router = useRouter();
+  const [error, setError] = useState<string | null>(null);
+
+  const previewImage = (file: File) => {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setPreviewUrl(reader.result as string);
+    };
+    reader.readAsDataURL(file);
+  };
 
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
+    setImage(null);
+    const file = e.target.files?.[0] || null;
     if (file) {
-      if (file.size > 1024 * 1000) {
-        toast('Image size or type not accepted', {
-          action: { label: 'Close', onClick: () => toast.dismiss() },
-        });
+      // Validate file size (2MB limit)
+      const maxSize = 1 * 1024 * 1024; // 1MB in bytes
+      if (file.size > maxSize) {
+        setError('File size exceeds 1MB.');
         setImage(null);
-        setFile(null);
+        setPreviewUrl(null);
         return;
-      } else {
-        const reader = new FileReader();
-        reader.onloadend = () => {
-          setFile(reader.result as string);
-        };
-        reader.readAsDataURL(file);
-        if (file) setImage(file);
       }
-    } else {
-      setImage(null);
-      setFile(null);
+
+      // Validate file type (only jpg, png, jpeg)
+      const allowedTypes = ['image/jpeg', 'image/png'];
+      if (!allowedTypes.includes(file.type)) {
+        setError('File format not supported. Only JPEG and PNG are allowed.');
+        setImage(null);
+        setPreviewUrl(null);
+        return;
+      }
+      setError(null);
+      setImage(file);
+      previewImage(file);
     }
   };
 
-  const handleRemoveClick = () => {
+  const handleImageRemove = () => {
     setImage(null);
-    setFile(null);
+    setPreviewUrl(null);
+    setError(null);
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLButtonElement>) => {
@@ -152,11 +163,16 @@ export function ComposePost() {
             onChange={onChangeHandler}
           />
 
-          {file && (
+          {error && <p style={{ color: 'red' }}>{error}</p>}
+          {previewUrl && (
             <div className="mt-2 relative">
-              <Image src={file} alt="Preview" width={500} height={500} />
+              <img
+                src={previewUrl}
+                alt="Image Preview"
+                className="w-full h-[200px]"
+              />
               <button
-                onClick={handleRemoveClick}
+                onClick={handleImageRemove}
                 className="absolute top-0 right-0 bg-red-500 text-white py-1 px-2"
                 aria-label="Remove image"
               >

@@ -2,7 +2,6 @@ import prisma from '@/db';
 import { authOptions } from '@/lib/auth';
 import { getServerSession } from 'next-auth';
 import { NextRequest, NextResponse } from 'next/server';
-import { comment } from 'postcss';
 
 export async function POST(
   req: NextRequest,
@@ -66,7 +65,7 @@ export async function GET(
     const page = Number(req.nextUrl.searchParams.get('page')) || 1;
     const skip = (page - 1) * 3;
     const isLast =
-      Math.round(
+      Math.floor(
         (await prisma.comment.findMany({ where: { postId } })).length / 3
       ) === page
         ? true

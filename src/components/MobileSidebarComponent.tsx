@@ -7,7 +7,7 @@ export function MobileSidebarComponent({
   path,
 }: {
   title: string;
-  icon: JSX.Element;
+  icon?: JSX.Element;
   path: string;
 }) {
   const pathName = usePathname();

@@ -160,7 +160,7 @@ export function Signin() {
                 handleSubmit();
               }}
             >
-              {loading ? 'please wait' : 'Signin'}
+              {loading ? 'signing...' : 'Signin'}
             </Button>
           </div>
           <div className="flex mt-4">

@@ -4,7 +4,7 @@ import { ComposePost } from './ComposePost';
 
 export function ComposePostButton() {
   return (
-    <div className="flex">
+    <div className="flex mt-4">
       <Dialog>
         <DialogTrigger className="w-full bg-blue-400 p-2 rounded-full">
           post

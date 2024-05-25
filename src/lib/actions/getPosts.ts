@@ -39,6 +39,9 @@ export async function getForYouPosts(): Promise<Post[]> {
           },
         },
       },
+      orderBy: {
+        createdAt: 'desc',
+      },
     });
 
     const postsWithIsLiked = posts.map((post) => {
@@ -67,12 +70,9 @@ export async function getFollowingPosts(): Promise<Post[]> {
   try {
     const session = await getServerSession(authOptions);
 
-    const followingUsers = await prisma.following.findMany({
+    const followingUsers = await prisma.follows.findMany({
       where: {
-        userId: Number(session?.user?.id),
-      },
-      select: {
-        followingId: true,
+        followerId: Number(session?.user?.id),
       },
     });
 
@@ -173,6 +173,9 @@ export async function getLimitedPosts({ page = 1 }: { page?: number }) {
             posts: { select: { id: true } },
           },
         },
+      },
+      orderBy: {
+        createdAt: 'desc',
       },
     });
 

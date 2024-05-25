@@ -8,9 +8,13 @@ import {
 } from '@/components/ui/sheet';
 import { CurrentUser } from '@/store/atoms/post';
 import { ProfileAvatar } from './ProfileAvatar';
-import { Bookmark, UserRound } from 'lucide-react';
+import { Bookmark, SquarePen, UserRound } from 'lucide-react';
 import { MobileSidebarComponent } from './MobileSidebarComponent';
 import { LogoutButton } from './LogoutButton';
+
+import { Dialog, DialogContent, DialogTrigger } from './ui/dialog';
+import { ComposePost } from './ComposePost';
+import { ComposePostButton } from './ComposePostButton';
 
 export function MobileSidebar({ user }: { user: CurrentUser | null }) {
   return (
@@ -66,7 +70,9 @@ export function MobileSidebar({ user }: { user: CurrentUser | null }) {
             icon={<Bookmark />}
             path={`/profile/${user?.id}/replies`}
           />
+
           <LogoutButton />
+          <ComposePostButton />
         </div>
       </SheetContent>
     </Sheet>

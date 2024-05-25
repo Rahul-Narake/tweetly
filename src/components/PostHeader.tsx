@@ -33,10 +33,10 @@ export function PostHeader({
   time,
   userId,
 }: {
-  name: string;
-  email: string;
-  time: Date;
-  userId: string;
+  name?: string;
+  email?: string;
+  time?: Date;
+  userId?: string;
 }) {
   const router = useRouter();
   return (
@@ -48,7 +48,9 @@ export function PostHeader({
     >
       <h3 className="text-md font-semibold mr-2 cursor-pointer">{name}</h3>
       <p className="text-sm text-slate-600 mr-2">{email}</p>
-      <p className="textsm text-slate-600">{getTimeDifference(time)}</p>
+      {time && (
+        <p className="textsm text-slate-600">{getTimeDifference(time)}</p>
+      )}
     </div>
   );
 }

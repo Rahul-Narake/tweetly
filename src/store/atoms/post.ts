@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { atom, selector } from 'recoil';
-import { number } from 'zod';
 export type UserPost = {
   id: number;
 };
@@ -42,11 +41,7 @@ export type Follow = {
   followerId: number;
   followingId: number;
 };
-// export type Following = {
-//   id: number;
-//   userId: number;
-//   followingId: number;
-// };
+
 export type Bookmark = {
   id: number;
   userId: number;
@@ -93,5 +88,10 @@ export const postTypeAtom = atom({ key: 'postTypeAtom', default: 'for_you' });
 
 export const currentUserAtom = atom<CurrentUser | null>({
   key: 'currentUserAtom',
+  default: null,
+});
+
+export const currentSelectedPostAtom = atom<Post | null>({
+  key: 'currentSelectedPostAtom',
   default: null,
 });
