@@ -8,7 +8,7 @@ import {
 } from '@/components/ui/sheet';
 import { CurrentUser } from '@/store/atoms/post';
 import { ProfileAvatar } from './ProfileAvatar';
-import { Bookmark, SquarePen, UserRound } from 'lucide-react';
+import { Bookmark, Search, SquarePen, UserRound } from 'lucide-react';
 import { MobileSidebarComponent } from './MobileSidebarComponent';
 import { LogoutButton } from './LogoutButton';
 
@@ -69,6 +69,11 @@ export function MobileSidebar({ user }: { user: CurrentUser | null }) {
             title="Bookmarks"
             icon={<Bookmark />}
             path={`/profile/${user?.id}/replies`}
+          />
+          <MobileSidebarComponent
+            title="Explore"
+            icon={<Search />}
+            path={`/explore`}
           />
 
           <LogoutButton />
