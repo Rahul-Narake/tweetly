@@ -65,7 +65,7 @@ export async function GET(
     const page = Number(req.nextUrl.searchParams.get('page')) || 1;
     const skip = (page - 1) * 3;
     const isLast =
-      Math.floor(
+      Math.round(
         (await prisma.comment.findMany({ where: { postId } })).length / 3
       ) === page
         ? true

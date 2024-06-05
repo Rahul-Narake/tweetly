@@ -1,43 +1,51 @@
 'use client';
 import { handleFollowUnfollow } from '@/lib/actions/followUnfollow';
-import { CurrentUser, User } from '@/store/atoms/post';
-import { useState } from 'react';
+import { currentSelectedUserAtom, currentUserAtom } from '@/store/atoms/post';
+import { useEffect, useState } from 'react';
+
+import { useRecoilState } from 'recoil';
 import { toast } from 'sonner';
 
-export function FollowUnfollowButton({
-  user,
-  currentUser,
-}: {
-  user: User | null;
-  currentUser: CurrentUser | null;
-}) {
+export function FollowUnfollowButton() {
+  const [currentUser, setCurrentUser] = useRecoilState(currentUserAtom);
+  const [currentSelectedUser, setCurrentSelectedUser] = useRecoilState(
+    currentSelectedUserAtom
+  );
+
   const isFollowing = () => {
-    if (currentUser) {
-      const followings = currentUser.following.filter(
-        (fw) => fw.followingId === user?.id
+    if (currentUser && currentSelectedUser) {
+      const following = currentUser.following.filter(
+        (fw) => fw?.followingId === currentSelectedUser?.id
       );
-      if (followings.length > 0) {
+      if (following) {
         return true;
       }
     }
+
     return false;
   };
+
   const [following, setFollowing] = useState(isFollowing());
-  console.log(user);
-  console.log(currentUser);
+
+  useEffect(() => {
+    isFollowing();
+  }, []);
+
   return (
-    <div
-      onClick={async () => {
-        const resp = await handleFollowUnfollow(Number(user?.id));
-        if (resp?.success) {
-          setFollowing((fw) => !fw);
-        }
-        toast(`${resp?.message}`, {
-          action: { label: 'close', onClick: () => toast.dismiss() },
-        });
-      }}
-    >
-      {following ? 'Unfollow' : 'Follow'}
+    <div className="flex justify-center items-center">
+      <span
+        onClick={async () => {
+          if (currentSelectedUser) {
+            const resp = await handleFollowUnfollow(currentSelectedUser?.id);
+            if (resp) {
+              setFollowing(!following);
+              toast(resp?.message);
+            }
+          }
+        }}
+      >
+        {following ? 'Unfollow' : 'Follow'}
+      </span>
     </div>
   );
 }

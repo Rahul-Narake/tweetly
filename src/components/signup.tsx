@@ -102,7 +102,7 @@ export function Signup() {
     <div className="flex justify-center items-center h-screen">
       <Card className="w-[80%] mx-auto md:w-[70%] lg:w-[30%]">
         <div className="flex justify-center">
-          <Logo width="20px" height="20px" />
+          <Logo />
         </div>
         <CardHeader>
           <CardTitle className="text-xl md:text-3xl">

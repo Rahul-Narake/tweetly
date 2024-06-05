@@ -1,5 +1,5 @@
 'use client';
-import { Pencil } from 'lucide-react';
+import { Camera, Pencil } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
@@ -86,7 +86,7 @@ export function EditProfileImage({ user }: { user: User | null }) {
   return (
     <Dialog>
       <DialogTrigger>
-        <Pencil size={16} />
+        <Camera size={32} />
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="mb-2">

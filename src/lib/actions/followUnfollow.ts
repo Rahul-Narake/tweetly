@@ -51,7 +51,6 @@ export async function handleFollowUnfollow(userId: number) {
     const isFollowing = await prisma.follows.findFirst({
       where: { followerId: currentUserId, followingId: userId },
     });
-    console.log(isFollowing);
     //if isfollowing then unfollow
 
     if (isFollowing) {
@@ -61,7 +60,6 @@ export async function handleFollowUnfollow(userId: number) {
       const followed = await prisma.follows.create({
         data: { followerId: currentUserId, followingId: userId },
       });
-      console.log(followed);
       return { message: 'Followed successfully', success: true };
     }
   } catch (error) {

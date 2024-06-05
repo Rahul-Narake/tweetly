@@ -1,3 +1,4 @@
+import { getCurrentUser } from '@/lib/actions/getCurrentUser';
 import axios from 'axios';
 import { atom, selector } from 'recoil';
 export type UserPost = {
@@ -74,8 +75,8 @@ const forYouPostSelector = selector({
 const currentUserSelector = selector({
   key: 'currentUserSelector',
   get: async () => {
-    const response = await axios.get('/api/users/current_user');
-    return response.data.user as CurrentUser;
+    const response = await getCurrentUser();
+    return response;
   },
 });
 
@@ -93,5 +94,10 @@ export const currentUserAtom = atom<CurrentUser | null>({
 
 export const currentSelectedPostAtom = atom<Post | null>({
   key: 'currentSelectedPostAtom',
+  default: null,
+});
+
+export const currentSelectedUserAtom = atom<User | null>({
+  key: 'currentSelectedUserAtom',
   default: null,
 });

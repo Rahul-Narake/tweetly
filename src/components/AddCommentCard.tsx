@@ -1,5 +1,5 @@
 'use client';
-import { Post, postsAtom } from '@/store/atoms/post';
+import { Post, currentSelectedPostAtom, postsAtom } from '@/store/atoms/post';
 import { ProfileAvatar } from './ProfileAvatar';
 import { PostHeader } from './PostHeader';
 import { PostContent } from './PostContent';
@@ -8,7 +8,7 @@ import { Button } from './ui/button';
 import { useRef, useState } from 'react';
 import axios from 'axios';
 import { toast } from 'sonner';
-import { useSetRecoilState } from 'recoil';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 
 export function AddComment({ post }: { post: Post }) {
   const content = useRef('');
@@ -17,6 +17,9 @@ export function AddComment({ post }: { post: Post }) {
   });
   const [loading, setLoading] = useState(false);
   const setPosts = useSetRecoilState(postsAtom);
+  const [selectedPost, setSelectedPost] = useRecoilState(
+    currentSelectedPostAtom
+  );
 
   const handleSubmit = async (e: React.FormEvent<HTMLButtonElement>) => {
     if (e) {
@@ -47,6 +50,12 @@ export function AddComment({ post }: { post: Post }) {
             return p;
           });
         });
+        if (selectedPost?.id === post?.id) {
+          setSelectedPost({
+            ...selectedPost,
+            comments: [...selectedPost?.comments, data?.comment],
+          });
+        }
       }
     } catch (error) {
       setLoading(false);
@@ -57,7 +66,7 @@ export function AddComment({ post }: { post: Post }) {
   return (
     <>
       <div className="grid grid-cols-12">
-        <div className="flex col-span-1 col-start-1">
+        <div className="sm:col-span-1 sm:col-start-1 hidden sm:flex">
           <ProfileAvatar src={post?.user?.profile} name={post?.user?.name} />
         </div>
         <div className="flex flex-col col-span-11 col-start-2">
@@ -74,7 +83,7 @@ export function AddComment({ post }: { post: Post }) {
         </div>
       </div>
       <div className="grid grid-cols-12 gap-4">
-        <div className="flex col-span-1 col-start-1">
+        <div className="sm:flex sm:col-span-1 sm:col-start-1 hidden">
           <ProfileAvatar src={post?.user?.profile} name={post?.user?.name} />
         </div>
         <div className="flex flex-col col-span-11 col-start-2">
