@@ -1,12 +1,9 @@
 'use client';
 import { CurrentUser, Post, currentSelectedPostAtom } from '@/store/atoms/post';
 import { BackButton } from './BackButton';
-import { PostCard } from './PostCard';
-import PostYourReply from './PostYourReply';
 import { getCurrentUser } from '@/lib/actions/getCurrentUser';
-import Comments from './Comments';
 import { useEffect, useState } from 'react';
-import { useRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import { PostContent } from './PostContent';
 import { useRouter } from 'next/navigation';
 import { ProfileAvatar } from './ProfileAvatar';
@@ -15,9 +12,7 @@ import SelectedPostFooter from './SelectedPostFooter';
 
 export default function PostComponent({ post }: { post: Post | null }) {
   const [currentUser, setCurrentUser] = useState<CurrentUser | null>(null);
-  const [currentSelectePost, setCurrentSelectedPost] = useRecoilState(
-    currentSelectedPostAtom
-  );
+  const setCurrentSelectedPost = useSetRecoilState(currentSelectedPostAtom);
   const router = useRouter();
   const getUser = async () => {
     const user = await getCurrentUser();

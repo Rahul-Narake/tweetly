@@ -20,7 +20,6 @@ export async function Sidebar() {
   const session = await getServerSession(authOptions);
   return (
     <div className="flex flex-col space-y-6 w-full pr-2">
-      <Logo width="12" height="12" />
       <SidebarComponent title="Home" icon={<Home />} path="/posts/for_you" />
       <SidebarComponent title="Explore" icon={<Search />} path="/explore" />
       <SidebarComponent

@@ -11,6 +11,8 @@ import {
   getSignature,
   savePostURLTODB,
 } from '@/lib/actions/cloudinary';
+import { useRecoilState } from 'recoil';
+import { postsAtom } from '@/store/atoms/post';
 
 export function ComposePost() {
   const [image, setImage] = useState<File | null>(null);
@@ -18,6 +20,7 @@ export function ComposePost() {
   const [content, setContent] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [posts, setPosts] = useRecoilState(postsAtom);
 
   const previewImage = (file: File) => {
     const reader = new FileReader();
@@ -71,7 +74,6 @@ export function ComposePost() {
         return;
       }
       const { data } = await axios.post('/api/post', { content });
-
       if (data?.success) {
         if (image && image !== null) {
           try {
@@ -97,7 +99,7 @@ export function ComposePost() {
               });
               if (isValid) {
                 const response = await savePostURLTODB({
-                  postId: data?.postId,
+                  postId: data?.post?.id,
                   secure_url: data1?.secure_url,
                 });
                 setLoading(false);
@@ -111,7 +113,6 @@ export function ComposePost() {
               }
             }
           } catch (error: any) {
-            console.log(error);
             setLoading(false);
             toast(error.message, {
               action: { label: 'Close', onClick: () => toast.dismiss() },
@@ -120,6 +121,7 @@ export function ComposePost() {
           }
         } else {
           if (data?.success) {
+            setPosts((posts) => [...posts, data?.post]);
             toast('Post created successfully', {
               action: { label: 'Close', onClick: () => toast.dismiss() },
             });

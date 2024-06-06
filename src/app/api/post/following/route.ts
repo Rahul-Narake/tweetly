@@ -1,4 +1,3 @@
-import prisma from '@/db';
 import { authOptions } from '@/lib/auth';
 import { getServerSession } from 'next-auth';
 import { NextRequest, NextResponse } from 'next/server';
@@ -12,6 +11,7 @@ export async function GET(req: NextRequest) {
         { status: 403 }
       );
     }
+    return NextResponse.json({ success: true });
   } catch (error: any) {
     console.log(error);
     throw new Error(error.message);

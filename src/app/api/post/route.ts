@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({
       message: 'Post Created successfully',
       success: true,
-      postId: post?.id,
+      post: post,
     });
   } catch (error: any) {
     console.log(error);

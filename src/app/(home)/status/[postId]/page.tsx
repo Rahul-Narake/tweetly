@@ -4,7 +4,7 @@ import { authOptions } from '@/lib/auth';
 import { Post } from '@/store/atoms/post';
 import { getServerSession } from 'next-auth';
 
-export async function getPost(postId: number): Promise<Post | null> {
+async function getPost(postId: number): Promise<Post | null> {
   try {
     const session = await getServerSession(authOptions);
     const post = await prisma.post.findUnique({

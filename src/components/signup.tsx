@@ -1,6 +1,5 @@
 'use client';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Logo } from './logo';
 import { Input } from './ui/input';
 import { useCallback, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -101,9 +100,6 @@ export function Signup() {
   return (
     <div className="flex justify-center items-center h-screen">
       <Card className="w-[80%] mx-auto md:w-[70%] lg:w-[30%]">
-        <div className="flex justify-center">
-          <Logo />
-        </div>
         <CardHeader>
           <CardTitle className="text-xl md:text-3xl">
             Create your account

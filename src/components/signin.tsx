@@ -1,5 +1,4 @@
 'use client';
-import { Logo } from './logo';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Toaster, toast } from 'sonner';
 import { Button } from './ui/button';
@@ -54,9 +53,6 @@ export function Signin() {
   return (
     <div className="flex justify-center items-center h-screen">
       <Card className="w-[80%] mx-auto md:w-[70%] lg:w-[30%]">
-        <div className="flex justify-center">
-          <Logo width="20px" height="20px" />
-        </div>
         <CardHeader>
           <CardTitle className="text-xl md:text-3xl">
             Signin to your account
@@ -164,7 +160,7 @@ export function Signin() {
             </Button>
           </div>
           <div className="flex mt-4">
-            <p>Don't have an account? </p>
+            <p>Don&apos;t have an account? </p>
             <span
               className="text-blue-600 ml-2 cursor-pointer"
               onClick={() => {
