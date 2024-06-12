@@ -3,9 +3,9 @@ import { sendEmail } from '@/lib/mailer';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(req: NextRequest) {
+  const searchPrams = req.nextUrl.searchParams;
+  const email = searchPrams.get('email') || '';
   try {
-    const searchPrams = req.nextUrl.searchParams;
-    const email = searchPrams.get('email') || '';
     const user = await prisma.user.findFirst({ where: { email: email } });
     if (!user) {
       return NextResponse.json(

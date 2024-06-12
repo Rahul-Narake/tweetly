@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { userId: string } }
+  params: { params: { userId: string } }
 ) {
   try {
     const session = await getServerSession(authOptions);
