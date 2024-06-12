@@ -15,7 +15,7 @@ export default async function HomeLayout({
   }
   return (
     <div className="grid md:grid-cols-12 grid-cols-1 h-screen w-full">
-      <div className="md:flex md:col-span-2 md:col-start-2 hidden">
+      <div className="md:flex md:col-span-2 md:col-start-2 hidden pt-2">
         <Sidebar />
       </div>
       <div className="md:col-span-6 md:col-start-4 border-x border-slate-600 flex flex-col overflow-y-scroll scroll-smooth">

@@ -1,5 +1,5 @@
 'use client';
-import { CurrentUser } from '@/store/atoms/post';
+import { CurrentUser, currentUserAtom } from '@/store/atoms/post';
 import {
   Dialog,
   DialogContent,
@@ -13,10 +13,12 @@ import { Label } from './ui/label';
 import { Input } from './ui/input';
 import { toast } from 'sonner';
 import { EditProfile } from '@/lib/actions/editProfile';
+import { useRecoilValue } from 'recoil';
 
 export function EditProfileComponent({ user }: { user: CurrentUser | null }) {
-  const [name, setName] = useState(user?.name || '');
-  const [bio, setBio] = useState(user?.bio || '');
+  const currentUser = useRecoilValue(currentUserAtom);
+  const [name, setName] = useState(currentUser?.name || '');
+  const [bio, setBio] = useState(currentUser?.bio || '');
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {

@@ -1,5 +1,6 @@
 import { getCurrentUser } from '@/lib/actions/getCurrentUser';
 import { User } from '@/store/atoms/post';
+import FollowComponent from './FollowComponent';
 
 export default async function UserData({ user }: { user: User | null }) {
   const currentUser = await getCurrentUser();
@@ -15,13 +16,13 @@ export default async function UserData({ user }: { user: User | null }) {
           <p className="text-slate-100 font-semibold">
             {currentUser?.followers.length}
           </p>
-          <p className="text-slate-500">Followers</p>
+          <FollowComponent title="Followers" path={`/${user?.id}/followers`} />
         </div>
         <div className="flex space-x-2">
           <p className="text-slate-100 font-semibold">
             {currentUser?.following.length}
           </p>
-          <p className="text-slate-500">Followings</p>
+          <FollowComponent title="Followers" path={`/${user?.id}/followings`} />
         </div>
       </div>
     </div>

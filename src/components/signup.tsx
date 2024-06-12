@@ -73,10 +73,12 @@ export function Signup() {
         });
         return;
       }
+
       const { data } = await axios.post(`/api/users/signup`, signupData);
       setLoading(false);
       if (data.success) {
-        router.push(`/verify-otp?email=${data?.email}`);
+        localStorage.setItem('email', email.current);
+        router.push(`/verify-otp`);
       } else {
         toast(`${data?.message || 'Error in signup'} `, {
           action: {

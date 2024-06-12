@@ -4,7 +4,6 @@ import { Post, postsAtom } from '@/store/atoms/post';
 import { useCallback, useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { useInView } from 'react-intersection-observer';
-import { getLimitedPosts } from '@/lib/actions/getPosts';
 import { PostCard } from './PostCard';
 import { getUsersPost } from '@/lib/actions/getUserData';
 export default function InfiniteScrollOnProfile({
