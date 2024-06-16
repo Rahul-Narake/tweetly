@@ -17,8 +17,8 @@ import { useRecoilValue } from 'recoil';
 
 export function EditProfileComponent({ user }: { user: CurrentUser | null }) {
   const currentUser = useRecoilValue(currentUserAtom);
-  const [name, setName] = useState(currentUser?.name || '');
-  const [bio, setBio] = useState(currentUser?.bio || '');
+  const [name, setName] = useState(currentUser?.name || user?.name);
+  const [bio, setBio] = useState(currentUser?.bio || user?.bio);
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -40,14 +40,12 @@ export function EditProfileComponent({ user }: { user: CurrentUser | null }) {
       toast(resp?.message, {
         action: { label: 'close', onClick: () => toast.dismiss() },
       });
-      if (resp?.success) {
-        window.location.reload();
-      }
     } catch (error) {
       console.log(error);
       setLoading(false);
     }
   };
+
   return (
     <Dialog>
       <DialogTrigger>Edit Profile</DialogTrigger>
@@ -75,7 +73,7 @@ export function EditProfileComponent({ user }: { user: CurrentUser | null }) {
                 name="bio"
                 id="bio"
                 type="text"
-                value={bio}
+                value={bio || ''}
                 onChange={(e) => {
                   setBio(e.target.value);
                 }}

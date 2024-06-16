@@ -11,18 +11,21 @@ export default async function UserData({ user }: { user: User | null }) {
         <p className="text-sm text-slate-500">{user?.email}</p>
       )}
       <p>{user?.bio}</p>
-      <div className="flex space-x-4">
-        <div className="flex space-x-2">
+      <div className="flex space-x-4 items-center">
+        <div className="flex space-x-2 items-center">
           <p className="text-slate-100 font-semibold">
             {currentUser?.followers.length}
           </p>
           <FollowComponent title="Followers" path={`/${user?.id}/followers`} />
         </div>
-        <div className="flex space-x-2">
+        <div className="flex space-x-2 items-center">
           <p className="text-slate-100 font-semibold">
             {currentUser?.following.length}
           </p>
-          <FollowComponent title="Followers" path={`/${user?.id}/followings`} />
+          <FollowComponent
+            title="Followings"
+            path={`/${user?.id}/followings`}
+          />
         </div>
       </div>
     </div>

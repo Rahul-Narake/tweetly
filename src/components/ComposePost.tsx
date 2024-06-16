@@ -74,60 +74,62 @@ export function ComposePost() {
         return;
       }
       const { data } = await axios.post('/api/post', { content });
-      if (data?.success) {
-        if (image && image !== null) {
-          try {
-            const { timestamp, signature } = await getSignature();
-            const formData = new FormData();
-            formData.append('file', image);
-            formData.append(
-              'api_key',
-              String(process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY)
-            );
-            formData.append('signature', String(signature));
-            formData.append('timestamp', String(timestamp));
-            formData.append('folder', 'twitter');
-            const endpoint = String(
-              process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_URL
-            );
-            const { data: data1 } = await axios.post(endpoint, formData);
-            if (data1.public_id) {
-              const isValid = await checkSignuature({
-                version: data1?.version,
-                signature: data1?.signature,
-                public_id: data1?.public_id,
+      if (data?.success && image && image !== null) {
+        try {
+          const { timestamp, signature } = await getSignature();
+          const formData = new FormData();
+          formData.append('file', image);
+          formData.append(
+            'api_key',
+            String(process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY)
+          );
+          formData.append('signature', String(signature));
+          formData.append('timestamp', String(timestamp));
+          formData.append('folder', 'twitter');
+          const endpoint = String(
+            process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_URL
+          );
+          const { data: imageData } = await axios.post(endpoint, formData);
+          if (imageData.public_id) {
+            const isValid = await checkSignuature({
+              version: imageData?.version,
+              signature: imageData?.signature,
+              public_id: imageData?.public_id,
+            });
+            if (isValid) {
+              const response = await savePostURLTODB({
+                postId: data?.post?.id,
+                secure_url: imageData?.secure_url,
               });
-              if (isValid) {
-                const response = await savePostURLTODB({
-                  postId: data?.post?.id,
-                  secure_url: data1?.secure_url,
-                });
-                setLoading(false);
-                toast(response?.message, {
-                  action: { label: 'close', onClick: () => toast.dismiss() },
-                });
-              } else {
-                toast('Error in upload photo', {
-                  action: { label: 'close', onClick: () => toast.dismiss() },
-                });
-              }
+              setLoading(false);
+              toast(response?.message, {
+                action: { label: 'close', onClick: () => toast.dismiss() },
+              });
+            } else {
+              toast('Error in upload photo', {
+                action: { label: 'close', onClick: () => toast.dismiss() },
+              });
             }
-          } catch (error: any) {
-            setLoading(false);
-            toast(error.message, {
-              action: { label: 'Close', onClick: () => toast.dismiss() },
-            });
-            return;
           }
-        } else {
-          if (data?.success) {
-            setPosts((posts) => [...posts, data?.post]);
-            toast('Post created successfully', {
-              action: { label: 'Close', onClick: () => toast.dismiss() },
-            });
-            setLoading(false);
-            return;
-          }
+        } catch (error: any) {
+          setLoading(false);
+          toast(error.message, {
+            action: { label: 'Close', onClick: () => toast.dismiss() },
+          });
+          return;
+        }
+        if (data?.success) {
+          if (!image) setPosts((posts) => [...posts, data?.post]);
+          if (image)
+            setPosts((posts) => [
+              ...posts,
+              { ...data?.post, image: previewUrl },
+            ]);
+          toast('Post created successfully', {
+            action: { label: 'Close', onClick: () => toast.dismiss() },
+          });
+          setLoading(false);
+          return;
         }
       } else {
         toast(data?.message, {

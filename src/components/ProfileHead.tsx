@@ -24,10 +24,10 @@ export async function ProfileHead({ userId }: { userId: number }) {
         <div className="flex flex-col justify-center items-start relative">
           <Image
             src={user?.profile || ''}
-            alt={user?.name || 'profile'}
+            alt={user?.name || 'Profile'}
             width={100}
             height={100}
-            className="rounded-full w-[150px] h-[150px]"
+            className="rounded-full w-[150px] h-[150px] border-2"
           />
           {user?.id === currentUser?.id && (
             <div className="flex w-full justify-center absolute">

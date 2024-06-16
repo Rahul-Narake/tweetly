@@ -293,7 +293,6 @@ import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { EditProfileComponent } from './EditProfile';
 import { MessageCircle } from 'lucide-react';
-import { FollowUnfollowButton } from './FollowUnfollowButton';
 import { handleFollowUnfollow } from '@/lib/actions/followUnfollow';
 import { toast } from 'sonner';
 
