@@ -8,12 +8,9 @@ import {
 } from '@/components/ui/sheet';
 import { CurrentUser } from '@/store/atoms/post';
 import { ProfileAvatar } from './ProfileAvatar';
-import { Bookmark, Search, SquarePen, UserRound } from 'lucide-react';
+import { Bookmark, Search, UserRound } from 'lucide-react';
 import { MobileSidebarComponent } from './MobileSidebarComponent';
 import { LogoutButton } from './LogoutButton';
-
-import { Dialog, DialogContent, DialogTrigger } from './ui/dialog';
-import { ComposePost } from './ComposePost';
 import { ComposePostButton } from './ComposePostButton';
 
 export function MobileSidebar({ user }: { user: CurrentUser | null }) {

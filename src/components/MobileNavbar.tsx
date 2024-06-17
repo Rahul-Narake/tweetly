@@ -6,7 +6,7 @@ export async function MobileNavbar() {
   return (
     <div className="flex justify-between items-center w-full px-4 py-1 h-12">
       <MobileSidebar user={currentUser} />
-      <h1 className="text-xl font-bold text-slate-200">X</h1>
+      <h1 className="text-xl font-bold text-slate-200">Tweetly</h1>
     </div>
   );
 }
