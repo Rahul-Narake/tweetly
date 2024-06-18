@@ -7,18 +7,18 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from './ui/button';
 import { Label } from './ui/label';
 import { Input } from './ui/input';
 import { toast } from 'sonner';
 import { EditProfile } from '@/lib/actions/editProfile';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 
 export function EditProfileComponent({ user }: { user: CurrentUser | null }) {
-  const currentUser = useRecoilValue(currentUserAtom);
+  const [currentUser, setCurrentUser] = useRecoilState(currentUserAtom);
   const [name, setName] = useState(currentUser?.name || user?.name);
-  const [bio, setBio] = useState(currentUser?.bio || user?.bio);
+  const [bio, setBio] = useState(currentUser?.bio || user?.bio || '');
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -36,6 +36,9 @@ export function EditProfileComponent({ user }: { user: CurrentUser | null }) {
         return;
       }
       const resp = await EditProfile({ name, bio });
+      if (resp?.success) {
+        if (currentUser) setCurrentUser({ ...currentUser, name, bio });
+      }
       setLoading(false);
       toast(resp?.message, {
         action: { label: 'close', onClick: () => toast.dismiss() },
@@ -45,6 +48,12 @@ export function EditProfileComponent({ user }: { user: CurrentUser | null }) {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (currentUser || user) {
+      setBio(currentUser?.bio || user?.bio || '');
+    }
+  }, []);
 
   return (
     <Dialog>
@@ -73,7 +82,7 @@ export function EditProfileComponent({ user }: { user: CurrentUser | null }) {
                 name="bio"
                 id="bio"
                 type="text"
-                value={bio || ''}
+                value={bio}
                 onChange={(e) => {
                   setBio(e.target.value);
                 }}

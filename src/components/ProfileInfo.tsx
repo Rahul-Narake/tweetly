@@ -4,11 +4,19 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover';
-
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
 import { Ellipsis } from 'lucide-react';
 import { signOut, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { ProfileAvatar } from './ProfileAvatar';
+import { Button } from './ui/button';
 
 export function ProfileComponent() {
   const session = useSession();
@@ -35,15 +43,27 @@ export function ProfileComponent() {
           </PopoverTrigger>
           <PopoverContent>
             {session?.data?.user && (
-              <span
-                className="text-sm text-slate-400 cursor-pointer"
-                onClick={async () => {
-                  await signOut();
-                  router.push('/api/auth/signin');
-                }}
-              >
-                Logout {session?.data?.user?.email}
-              </span>
+              <Dialog>
+                <DialogTrigger>
+                  Logout {session?.data?.user?.email}
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle className="text-sm text-slate-500">
+                      Are you absolutely sure?
+                    </DialogTitle>
+                  </DialogHeader>
+                  <Button
+                    className="cursor-pointer"
+                    onClick={async () => {
+                      await signOut();
+                      router.push('/api/auth/signin');
+                    }}
+                  >
+                    Yes,Logout
+                  </Button>
+                </DialogContent>
+              </Dialog>
             )}
           </PopoverContent>
         </Popover>

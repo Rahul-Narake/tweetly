@@ -346,6 +346,7 @@ export default function ProfileImage({
                     const resp = await handleFollowUnfollow(selectedUser?.id);
                     toast(resp?.message);
                     if (resp?.success) {
+                      setFollowing(!following);
                     }
                   }
                 }}

@@ -29,8 +29,10 @@ export default function InfiniteScrollPosts({
   }, [posts.length]);
 
   useEffect(() => {
-    if (initialPosts) setPosts(initialPosts);
-    setPage(1);
+    if (initialPosts) {
+      setPosts(initialPosts);
+      setPage(1);
+    }
   }, []);
 
   useEffect(() => {
