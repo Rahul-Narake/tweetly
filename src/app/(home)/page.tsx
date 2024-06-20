@@ -22,7 +22,7 @@ export default async function Dashboard() {
   console.log(session?.user);
 
   if (!session?.user) {
-    redirect('/api/auth/signin');
+    redirect('/signin');
   } else {
     redirect('/posts/for_you');
   }

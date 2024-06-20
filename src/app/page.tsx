@@ -5,7 +5,7 @@ export default async function Home() {
   const session = await getServerSession(authOptions);
   console.log(session?.user);
   if (!session?.user) {
-    redirect('/api/auth/signin');
+    redirect('/signin');
   } else {
     redirect('/posts/for_you');
   }

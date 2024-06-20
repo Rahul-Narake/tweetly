@@ -57,7 +57,7 @@ export function ProfileComponent() {
                     className="cursor-pointer"
                     onClick={async () => {
                       await signOut();
-                      router.push('/api/auth/signin');
+                      router.push('/signin');
                     }}
                   >
                     Yes,Logout
