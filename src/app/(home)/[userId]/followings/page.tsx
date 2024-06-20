@@ -23,7 +23,7 @@ const getFollowings = async (userId: number) => {
         },
       },
     });
-
+    console.log(data);
     return data?.following as Followers[];
   } catch (error) {
     console.log(error);

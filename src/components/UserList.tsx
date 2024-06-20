@@ -7,7 +7,7 @@ import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 function UserList({ users }: { users: Followers[] | null }) {
   const router = useRouter();
   return (
-    <div className="flex mx-auto w-[80%] mt-4">
+    <div className="flex flex-col mx-auto w-[80%] mt-4">
       {users &&
         users.map((user) => {
           return (

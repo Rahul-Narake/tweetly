@@ -24,7 +24,7 @@ export function PasswordPage() {
   const handleSubmit = async () => {
     const response = await savePassword({ email, password });
     if (response.success) {
-      localStorage.setItem('email', '');
+      localStorage.removeItem('email');
       router.push('/');
     } else {
       toast(response.message, {
