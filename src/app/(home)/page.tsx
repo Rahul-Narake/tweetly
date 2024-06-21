@@ -19,10 +19,8 @@ import { redirect } from 'next/navigation';
 export default async function Dashboard() {
   const session = await getServerSession(authOptions);
 
-  console.log(session?.user);
-
   if (!session?.user) {
-    redirect('/signin');
+    redirect('/api/auth/signin');
   } else {
     redirect('/posts/for_you');
   }
