@@ -20,7 +20,7 @@ export default async function Dashboard() {
   const session = await getServerSession(authOptions);
 
   if (!session?.user) {
-    redirect('/api/auth/signin');
+    redirect('/signin');
   } else {
     redirect('/posts/for_you');
   }
