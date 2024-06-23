@@ -8,10 +8,11 @@ import {
 } from '@/components/ui/sheet';
 import { CurrentUser } from '@/store/atoms/post';
 import { ProfileAvatar } from './ProfileAvatar';
-import { Bookmark, Search, UserRound } from 'lucide-react';
+import { Bird, Bookmark, Search, UserRound } from 'lucide-react';
 import { MobileSidebarComponent } from './MobileSidebarComponent';
 import { LogoutButton } from './LogoutButton';
 import { ComposePostButton } from './ComposePostButton';
+import FollowComponent from './FollowComponent';
 
 export function MobileSidebar({ user }: { user: CurrentUser | null }) {
   return (
@@ -39,24 +40,35 @@ export function MobileSidebar({ user }: { user: CurrentUser | null }) {
               <p className="text-start text-sm font-light text-slate-400">
                 {user?.email}
               </p>
-              <div className="flex items-center space-x-2 mt-4">
-                <div className="flex space-x-2">
-                  <span className="text-sm text-slate-200 ">
+              <div className="flex space-x-4 items-center ">
+                <div className="flex space-x-2 items-center ">
+                  <p className="text-slate-100 font-semibold text-sm">
                     {user?.followers.length}
-                  </span>
-                  <p className="text-sm text-slate-400">Followers</p>
+                  </p>
+                  <FollowComponent
+                    title="Followers"
+                    path={`/${user?.id}/followers`}
+                  />
                 </div>
-                <div className="flex space-x-2">
-                  <span className="text-sm text-slate-200 ">
+                <div className="flex space-x-2 items-center">
+                  <p className="text-slate-100 font-semibold">
                     {user?.following.length}
-                  </span>
-                  <p className="text-sm text-slate-400">Followings</p>
+                  </p>
+                  <FollowComponent
+                    title="Followings"
+                    path={`/${user?.id}/followings`}
+                  />
                 </div>
               </div>
             </div>
           </SheetTitle>
         </SheetHeader>
         <div className="flex flex-col space-y-4">
+          <MobileSidebarComponent
+            title="Tweets"
+            icon={<Bird />}
+            path={`/posts/for_you`}
+          />
           <MobileSidebarComponent
             title="Profile"
             icon={<UserRound />}

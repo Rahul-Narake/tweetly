@@ -13,7 +13,7 @@ import { Label } from './ui/label';
 import { Input } from './ui/input';
 import { toast } from 'sonner';
 import { EditProfile } from '@/lib/actions/editProfile';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 
 export function EditProfileComponent({ user }: { user: CurrentUser | null }) {
   const [currentUser, setCurrentUser] = useRecoilState(currentUserAtom);
@@ -50,9 +50,7 @@ export function EditProfileComponent({ user }: { user: CurrentUser | null }) {
   };
 
   useEffect(() => {
-    if (currentUser || user) {
-      setBio(currentUser?.bio || user?.bio || '');
-    }
+    if (currentUser || user) setBio(currentUser?.bio || user?.bio || '');
   }, []);
 
   return (

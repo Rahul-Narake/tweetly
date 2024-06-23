@@ -13,7 +13,7 @@ export async function ProfileHead({ userId }: { userId: number }) {
 
   return (
     <div className="flex flex-col">
-      <div className="flex sticky top-0 space-x-8 bg-gray-800 border-b-[1px] border-slate-500 px-2 items-center py-1 z-20">
+      <div className="flex sticky top-0 space-x-8 bg-gray-800 border-b-[1px] border-slate-500 px-2 items-center py-1 z-4">
         <BackButton />
         <div className="flex flex-col">
           <h2>{user?.name}</h2>
@@ -29,7 +29,7 @@ export async function ProfileHead({ userId }: { userId: number }) {
             height={100}
             className="rounded-full w-[150px] h-[150px] border-2"
           />
-          {user?.id === currentUser?.id && (
+          {currentUser && user?.id === currentUser?.id && (
             <div className="flex w-full justify-center absolute">
               <EditProfileImage user={user} />
             </div>

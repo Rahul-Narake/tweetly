@@ -22,7 +22,9 @@ export default async function PostsLayout({
         <PostType title="For You" path="/posts/for_you" />
         <PostType title="Following" path="/posts/following" />
       </div>
-      <div className="flex flex-col h-screen w-full">{children}</div>
+      <div className="flex flex-col h-screen w-full overflow-y-scroll">
+        {children}
+      </div>
     </>
   );
 }

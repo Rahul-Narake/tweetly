@@ -1,10 +1,15 @@
 'use client';
-import { Followers } from '@/app/(home)/[userId]/followers/page';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 
-function UserList({ users }: { users: Followers[] | null }) {
+export type UserInfoType = {
+  id: number;
+  name: string;
+  profile?: string | null;
+};
+
+function UserList({ users }: { users: UserInfoType[] | null }) {
   const router = useRouter();
   return (
     <div className="flex flex-col mx-auto w-[80%] mt-4">
@@ -12,22 +17,17 @@ function UserList({ users }: { users: Followers[] | null }) {
         users.map((user) => {
           return (
             <div
-              key={user?.follower?.id}
+              key={user?.id}
               className="flex space-x-2 w-full border-[1px] border-slate-600 rounded-full mb-2 px-2 py-1 items-center cursor-pointer hover:bg-gray-700"
               onClick={() => {
-                router.push(`/profile/${user?.follower?.id}/posts`);
+                router.push(`/profile/${user?.id}/posts`);
               }}
             >
               <Avatar>
-                <AvatarImage
-                  src={user?.follower?.profile}
-                  alt={user?.follower?.name}
-                />
-                <AvatarFallback>
-                  {user?.follower?.name.charAt(0)}
-                </AvatarFallback>
+                <AvatarImage src={user?.profile || ''} alt={user?.name} />
+                <AvatarFallback>{user?.name.charAt(0)}</AvatarFallback>
               </Avatar>
-              <h3>{user?.follower?.name}</h3>
+              <h3>{user?.name}</h3>
             </div>
           );
         })}

@@ -14,13 +14,13 @@ export default async function UserData({ user }: { user: User | null }) {
       <div className="flex space-x-4 items-center">
         <div className="flex space-x-2 items-center">
           <p className="text-slate-100 font-semibold">
-            {currentUser?.followers.length}
+            {user?.followers.length}
           </p>
           <FollowComponent title="Followers" path={`/${user?.id}/followers`} />
         </div>
         <div className="flex space-x-2 items-center">
           <p className="text-slate-100 font-semibold">
-            {currentUser?.following.length}
+            {user?.following.length}
           </p>
           <FollowComponent
             title="Followings"

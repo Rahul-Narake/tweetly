@@ -1,32 +1,34 @@
-import UserList from '@/components/UserList';
+import UserList, { UserInfoType } from '@/components/UserList';
 import prisma from '@/db';
 import React from 'react';
 import { Followers } from '../followers/page';
 
-const getFollowings = async (userId: number) => {
+const getFollowings = async (
+  userId: number
+): Promise<UserInfoType[] | null> => {
   try {
-    const data = await prisma.user.findFirst({
-      where: {
-        id: userId,
-      },
+    const followings = await prisma.follows.findMany({
+      where: { followerId: userId },
       select: {
         following: {
           select: {
-            follower: {
-              select: {
-                id: true,
-                name: true,
-                profile: true,
-              },
-            },
+            id: true,
+            name: true,
+            profile: true,
           },
         },
       },
     });
-    console.log(data);
-    return data?.following as Followers[];
+
+    if (followings) {
+      const data = followings.map((item) => item.following);
+      return data;
+    }
+
+    return null;
   } catch (error) {
     console.log(error);
+    return null;
   }
 };
 

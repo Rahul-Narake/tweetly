@@ -18,9 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className="min-h-screen">
         <Provider>
-          <div className="min-h-screen">{children}</div>
+          <div className="h-screen">{children}</div>
           <Toaster />
         </Provider>
       </body>

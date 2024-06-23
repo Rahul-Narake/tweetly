@@ -9,10 +9,4 @@ export default async function Home() {
   } else {
     redirect('/posts/for_you');
   }
-
-  // if (session?.user) {
-  //   redirect('/posts/for_you');
-  // } else {
-  //   return <LandingPage />;
-  // }
 }

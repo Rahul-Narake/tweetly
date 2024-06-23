@@ -8,7 +8,7 @@ export function ProfileAvatar({
   name: string;
 }) {
   return (
-    <Avatar>
+    <Avatar className="z-0">
       <AvatarImage src={src || 'https://github.com/shadcn.png'} />
       <AvatarFallback>{name?.charAt(0)}</AvatarFallback>
     </Avatar>

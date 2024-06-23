@@ -1,45 +1,24 @@
-// import { User } from '@/store/atoms/post';
-// import { ProfileContent } from './ProfileContent';
-// import { ProfileHeader } from './ProfileHeader';
-// import prisma from '@/db';
-// import { ProfileTabs } from './ProfileTabs';
+'use client';
+import { getCurrentUser } from '@/lib/actions/getCurrentUser';
+import { currentUserAtom } from '@/store/atoms/post';
+import { useSession } from 'next-auth/react';
+import React, { useCallback, useEffect } from 'react';
+import { useSetRecoilState } from 'recoil';
 
-// export async function getUserData(userId: number): Promise<User | null> {
-//   try {
-//     const user = await prisma.user.findUnique({
-//       where: { id: userId },
-//       select: {
-//         id: true,
-//         name: true,
-//         email: true,
-//         dob: true,
-//         followers: true,
-//         following: true,
-//         bio: true,
-//         profile: true,
-//         posts: {
-//           select: {
-//             id: true,
-//           },
-//         },
-//       },
-//     });
+function Profile() {
+  const getloggedInUser = useCallback(async () => {
+    const user = await getCurrentUser();
+    setCurrentUser(user);
+  }, []);
 
-//     return user;
-//   } catch (err: any) {
-//     console.log(err);
-//     return null;
-//   }
-// }
+  const setCurrentUser = useSetRecoilState(currentUserAtom);
+  const { data } = useSession();
+  useEffect(() => {
+    if (data?.user) {
+      getloggedInUser();
+    }
+  }, []);
+  return <></>;
+}
 
-// export async function Profile({ userId }: { userId: number }) {
-//   const user = await getUserData(userId);
-//   return (
-//     <div className="flex flex-col w-full">
-//       {/* <ProfileHeader name={user?.name || ''} posts={user?.posts.length || 1} /> */}
-//       <ProfileImageSection userId={userId} user={user} />
-//       <ProfileContent user={user} />
-//       <ProfileTabs userId={userId} />
-//     </div>
-//   );
-// }
+export default Profile;

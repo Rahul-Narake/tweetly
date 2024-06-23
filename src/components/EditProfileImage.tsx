@@ -1,5 +1,5 @@
 'use client';
-import { Camera, Pencil } from 'lucide-react';
+import { Camera } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
