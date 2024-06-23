@@ -4,39 +4,43 @@ import { Post, postsAtom } from '@/store/atoms/post';
 import { useCallback, useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { useInView } from 'react-intersection-observer';
-import { getLimitedPosts } from '@/lib/actions/getPosts';
+import { getLimitedPosts, getTotalPosts } from '@/lib/actions/getPosts';
 import { PostCard } from './PostCard';
 export default function InfiniteScrollPosts({
   initialPosts,
 }: {
   initialPosts: Post[];
 }) {
+  const [loading, setLoading] = useState(false);
   const [posts, setPosts] = useRecoilState(postsAtom);
   const [page, setPage] = useState(1);
   const [ref, inview] = useInView();
-  const [isLast, setIsLast] = useState(false);
+  const [totalResults, setTotalResults] = useState(0);
 
-  const loadMorePosts = useCallback(async () => {
-    const next = page + 1;
-    const posts = await getLimitedPosts({ page: next });
-    if (posts?.length) {
-      setIsLast(false);
-      setPage(next);
-      setPosts((prev) => [...(prev?.length ? prev : []), ...posts]);
-    } else {
-      setIsLast(true);
+  const loadMorePosts = async () => {
+    if (posts.length < totalResults) {
+      setLoading(true);
+      setPage((page) => page + 1);
+      const posts = await getLimitedPosts({ page });
+      setPosts((prevPosts) => [...prevPosts, ...posts]);
+      setLoading(false);
     }
-  }, [posts.length]);
+  };
+
+  const setTotalPosts = async () => {
+    const data = await getTotalPosts();
+    if (data) setTotalResults(data);
+  };
 
   useEffect(() => {
     if (initialPosts) {
       setPosts(initialPosts);
-      setPage(1);
     }
+    setTotalPosts();
   }, []);
 
   useEffect(() => {
-    if (inview && !isLast) {
+    if (inview && posts.length < totalResults) {
       loadMorePosts();
     }
   }, [inview]);
@@ -53,7 +57,7 @@ export default function InfiniteScrollPosts({
             <h1>Sorry no posts found</h1>
           </div>
         )}
-        {!isLast && (
+        {posts.length < totalResults && (
           <div
             ref={ref}
             className="col-span-1 mt-8 flex items-center justify-center sm:col-span-2 md:col-span-3 lg:col-span-4"

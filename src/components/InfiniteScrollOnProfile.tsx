@@ -1,11 +1,11 @@
 'use client';
-
 import { Post, postsAtom } from '@/store/atoms/post';
 import { useCallback, useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { useInView } from 'react-intersection-observer';
 import { PostCard } from './PostCard';
 import { getUsersPost } from '@/lib/actions/getUserData';
+import { getUsersTotalPosts } from '@/lib/actions/getPosts';
 export default function InfiniteScrollOnProfile({
   initialPosts,
   userId,
@@ -16,27 +16,30 @@ export default function InfiniteScrollOnProfile({
   const [posts, setPosts] = useRecoilState(postsAtom);
   const [page, setPage] = useState(1);
   const [ref, inview] = useInView();
-  const [isLast, setIsLast] = useState(false);
+  const [totalPosts, setTotalPosts] = useState(0);
 
-  const loadMorePosts = useCallback(async () => {
-    const next = page + 1;
-    const posts = await getUsersPost({ userId, page: next });
-    if (posts?.length) {
-      setIsLast(false);
-      setPage(next);
-      setPosts((prev) => [...(prev?.length ? prev : []), ...posts]);
-    } else {
-      setIsLast(true);
+  const loadMorePosts = async () => {
+    if (posts.length < totalPosts) {
+      setPage((page) => page + 1);
+      const posts = await getUsersPost({ userId, page });
+      setPosts((prev) => [...prev, ...posts]);
     }
-  }, [posts.length]);
+  };
+
+  const getTotalPosts = async () => {
+    const totalPosts = await getUsersTotalPosts(userId);
+    if (totalPosts) {
+      setTotalPosts(totalPosts);
+    }
+  };
 
   useEffect(() => {
     if (initialPosts) setPosts(initialPosts);
-    setPage(1);
+    getTotalPosts();
   }, []);
 
   useEffect(() => {
-    if (inview && !isLast) {
+    if (inview && posts.length < totalPosts) {
       loadMorePosts();
     }
   }, [inview]);
@@ -54,7 +57,7 @@ export default function InfiniteScrollOnProfile({
           </div>
         )}
 
-        {!isLast && (
+        {posts.length < totalPosts && (
           <div
             ref={ref}
             className="col-span-1 mt-8 flex items-center justify-center sm:col-span-2 md:col-span-3 lg:col-span-4"

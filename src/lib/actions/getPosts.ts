@@ -137,7 +137,11 @@ export async function getFollowingPosts(): Promise<Post[]> {
   }
 }
 
-export async function getLimitedPosts({ page = 1 }: { page?: number }) {
+export async function getLimitedPosts({
+  page = 1,
+}: {
+  page?: number;
+}): Promise<Post[] | []> {
   try {
     const session = await getServerSession(authOptions);
     const skip = (page - 1) * 3;
@@ -268,5 +272,29 @@ export async function getRepliedPosts({
   } catch (error) {
     console.log(error);
     return [];
+  }
+}
+
+export async function getTotalPosts(): Promise<number | null> {
+  try {
+    const posts = await prisma.post.findMany();
+    return posts.length;
+  } catch (error) {
+    return null;
+  }
+}
+
+export async function getUsersTotalPosts(
+  userId: number
+): Promise<number | null> {
+  try {
+    const posts = await prisma.post.findMany({
+      where: {
+        userId,
+      },
+    });
+    return posts.length;
+  } catch (error) {
+    return null;
   }
 }

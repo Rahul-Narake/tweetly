@@ -15,7 +15,7 @@ export default async function PostsLayout({
   }
   return (
     <>
-      <div className="sm:hidden flex">
+      {/* <div className="sm:hidden flex">
         <MobileNavbar />
       </div>
       <div className="w-full bg-gray-900 z-50 sticky top-0 border-b-[1px] border-slate-400 flex justify-around py-1 h-12">
@@ -24,7 +24,15 @@ export default async function PostsLayout({
       </div>
       <div className="flex flex-col h-screen w-full overflow-y-scroll">
         {children}
+      </div> */}
+      <div className="sm:hidden flex">
+        <MobileNavbar />
       </div>
+      <div className="w-full bg-gray-900 z-50 sticky top-0 border-b-[1px] border-slate-400 flex justify-around py-1 h-12">
+        <PostType title="For You" path="/posts/for_you" />
+        <PostType title="Following" path="/posts/following" />
+      </div>
+      <div className="flex flex-col h-full">{children}</div>
     </>
   );
 }
