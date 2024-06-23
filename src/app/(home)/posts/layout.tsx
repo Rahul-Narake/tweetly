@@ -14,17 +14,7 @@ export default async function PostsLayout({
     redirect('/api/auth/signin');
   }
   return (
-    <>
-      {/* <div className="sm:hidden flex">
-        <MobileNavbar />
-      </div>
-      <div className="w-full bg-gray-900 z-50 sticky top-0 border-b-[1px] border-slate-400 flex justify-around py-1 h-12">
-        <PostType title="For You" path="/posts/for_you" />
-        <PostType title="Following" path="/posts/following" />
-      </div>
-      <div className="flex flex-col h-screen w-full overflow-y-scroll">
-        {children}
-      </div> */}
+    <div className="flex flex-col h-[100vh]">
       <div className="sm:hidden flex">
         <MobileNavbar />
       </div>
@@ -32,7 +22,7 @@ export default async function PostsLayout({
         <PostType title="For You" path="/posts/for_you" />
         <PostType title="Following" path="/posts/following" />
       </div>
-      <div className="flex flex-col h-full">{children}</div>
-    </>
+      <div className="flex flex-col relative">{children}</div>
+    </div>
   );
 }

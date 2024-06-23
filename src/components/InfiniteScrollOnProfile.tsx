@@ -20,9 +20,10 @@ export default function InfiniteScrollOnProfile({
 
   const loadMorePosts = async () => {
     if (posts.length < totalPosts) {
-      setPage((page) => page + 1);
-      const posts = await getUsersPost({ userId, page });
+      const pageNumber = page + 1;
+      const posts = await getUsersPost({ userId, page: pageNumber });
       setPosts((prev) => [...prev, ...posts]);
+      setPage((page) => page + 1);
     }
   };
 
@@ -34,7 +35,9 @@ export default function InfiniteScrollOnProfile({
   };
 
   useEffect(() => {
-    if (initialPosts) setPosts(initialPosts);
+    if (initialPosts) {
+      setPosts(initialPosts);
+    }
     getTotalPosts();
   }, []);
 

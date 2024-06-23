@@ -1,7 +1,7 @@
 'use client';
 
 import { Post, postsAtom } from '@/store/atoms/post';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { useInView } from 'react-intersection-observer';
 import { getLimitedPosts, getTotalPosts } from '@/lib/actions/getPosts';
@@ -18,13 +18,15 @@ export default function InfiniteScrollPosts({
   const [totalResults, setTotalResults] = useState(0);
 
   const loadMorePosts = async () => {
-    if (posts.length < totalResults) {
+    if (posts.length < totalResults && inview) {
       setLoading(true);
-      setPage((page) => page + 1);
-      const posts = await getLimitedPosts({ page });
+      const pageNumber = page + 1;
+      const posts = await getLimitedPosts({ page: pageNumber });
       setPosts((prevPosts) => [...prevPosts, ...posts]);
+      setPage((page) => page + 1);
       setLoading(false);
     }
+    console.log(posts);
   };
 
   const setTotalPosts = async () => {
@@ -40,9 +42,7 @@ export default function InfiniteScrollPosts({
   }, []);
 
   useEffect(() => {
-    if (inview && posts.length < totalResults) {
-      loadMorePosts();
-    }
+    loadMorePosts();
   }, [inview]);
 
   return (

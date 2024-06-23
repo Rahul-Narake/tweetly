@@ -38,26 +38,25 @@ function Posts({ initialPosts }: { initialPosts: Post[] }) {
   }, []);
 
   return (
-    <div>
-      <InfiniteScroll
-        dataLength={posts.length}
-        next={fetchMoreData}
-        hasMore={posts.length !== totalResults}
-        loader={loading && <Spinner />}
-      >
-        <div className="flex flex-col items-center justify-center h-full">
-          {posts ? (
-            posts.map((post) => {
-              return <PostCard post={post} key={post?.id} />;
-            })
-          ) : (
-            <div className="flex">
-              <h1>Sorry no posts found</h1>
-            </div>
-          )}
-        </div>
-      </InfiniteScroll>
-    </div>
+    <InfiniteScroll
+      dataLength={posts.length}
+      next={fetchMoreData}
+      hasMore={posts.length !== totalResults}
+      loader={loading && <Spinner />}
+      className="h-screen overflow-y-scroll"
+    >
+      <div className="flex flex-col items-center justify-center h-full overflow-y-scroll">
+        {posts ? (
+          posts.map((post) => {
+            return <PostCard post={post} key={post?.id} />;
+          })
+        ) : (
+          <div className="flex">
+            <h1>Sorry no posts found</h1>
+          </div>
+        )}
+      </div>
+    </InfiniteScroll>
   );
 }
 
