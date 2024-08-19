@@ -2,7 +2,7 @@
 
 import { getServerSession } from 'next-auth';
 import { authOptions } from '../auth';
-import prisma from '@/db';
+import prisma from '@repo/db/client';
 
 export async function EditProfile({
   name,

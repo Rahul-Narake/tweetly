@@ -64,21 +64,21 @@ export type CurrentUser = {
   bookmarks: Bookmark[];
 };
 
-const forYouPostSelector = selector({
-  key: 'forYouPostSelector',
-  get: async () => {
-    const response = await axios.get('/api/post');
-    return response.data.posts as Post[];
-  },
-});
+// const forYouPostSelector = selector({
+//   key: 'forYouPostSelector',
+//   get: async () => {
+//     const response = await axios.get('/api/post');
+//     return response.data.posts as Post[];
+//   },
+// });
 
-const currentUserSelector = selector({
-  key: 'currentUserSelector',
-  get: async () => {
-    const response = await getCurrentUser();
-    return response;
-  },
-});
+// const currentUserSelector = selector({
+//   key: 'currentUserSelector',
+//   get: async () => {
+//     const response = await getCurrentUser();
+//     return response;
+//   },
+// });
 
 export const postsAtom = atom<Post[]>({
   key: 'postsAtom',

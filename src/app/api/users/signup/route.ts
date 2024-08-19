@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import prisma from '@/db';
+import prisma from '@repo/db/client';
 import { signupInput } from '../../../../utils/types';
 import { sendEmail } from '@/lib/mailer';
 

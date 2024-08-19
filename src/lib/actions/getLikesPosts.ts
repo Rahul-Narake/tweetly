@@ -1,6 +1,6 @@
 'use server';
 
-import prisma from '@/db';
+import prisma from '@repo/db/client';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '../auth';
 import { Post } from '@/store/atoms/post';

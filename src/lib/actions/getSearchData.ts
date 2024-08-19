@@ -1,5 +1,5 @@
 'use server';
-import prisma from '@/db';
+import prisma from '@repo/db/client';
 
 export interface SearchDataType {
   id: number;

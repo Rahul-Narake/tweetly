@@ -1,4 +1,4 @@
-import prisma from '@/db';
+import prisma from '@repo/db/client';
 import { authOptions } from '@/lib/auth';
 import { PostInput } from '@/utils/types';
 import { getServerSession } from 'next-auth';

@@ -51,7 +51,7 @@ export default function InfiniteScrollOnProfile({
     <>
       <div className="flex flex-col items-center justify-center">
         {posts && posts.length > 0 ? (
-          posts.map((post) => {
+          posts.map((post, i) => {
             return <PostCard post={post} key={post?.id} />;
           })
         ) : (

@@ -1,5 +1,5 @@
 import nodemailer from 'nodemailer';
-import prisma from '@/db';
+import prisma from '@repo/db/client';
 
 const randomCodeGenerate = () => {
   return Math.floor(100000 + Math.random() * 900000);

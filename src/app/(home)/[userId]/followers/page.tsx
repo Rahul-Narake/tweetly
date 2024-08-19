@@ -1,5 +1,5 @@
 import UserList, { UserInfoType } from '@/components/UserList';
-import prisma from '@/db';
+import prisma from '@repo/db/client';
 import React from 'react';
 
 export type Followers = {

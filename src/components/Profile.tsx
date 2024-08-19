@@ -6,17 +6,17 @@ import React, { useCallback, useEffect } from 'react';
 import { useSetRecoilState } from 'recoil';
 
 function Profile() {
-  const getloggedInUser = useCallback(async () => {
-    const user = await getCurrentUser();
-    setCurrentUser(user);
-  }, []);
+  // const getloggedInUser = useCallback(async () => {
+  //   const user = await getCurrentUser();
+  //   setCurrentUser(user);
+  // }, []);
 
   const setCurrentUser = useSetRecoilState(currentUserAtom);
   const { data } = useSession();
   useEffect(() => {
-    if (data?.user) {
-      getloggedInUser();
-    }
+    // if (data?.user) {
+    //   getloggedInUser();
+    // }
   }, []);
   return <></>;
 }

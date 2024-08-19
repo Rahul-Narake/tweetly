@@ -1,17 +1,3 @@
-// import { useSession } from 'next-auth/react';
-// import { useRouter } from 'next/navigation';
-
-// export default function Dashboard() {
-//   const session = useSession();
-
-//   const router = useRouter();
-//   if (!session?.data?.user) {
-//     router.push('/api/auth/signin');
-//   } else {
-//     router.push('/posts/for_you');
-//   }
-// }
-
 import { authOptions } from '@/lib/auth';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';

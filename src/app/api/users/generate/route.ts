@@ -1,4 +1,4 @@
-import prisma from '@/db';
+import prisma from '@repo/db/client';
 import { sendEmail } from '@/lib/mailer';
 import { NextRequest, NextResponse } from 'next/server';
 

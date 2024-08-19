@@ -1,7 +1,7 @@
 'use client';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowLeft } from 'lucide-react';
-import { useSearchParams, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { useEffect, useState } from 'react';
@@ -9,8 +9,6 @@ import { Toaster, toast } from 'sonner';
 import axios from 'axios';
 
 export function VerifyOTP() {
-  //const searchParams = useSearchParams();
-  //const email = searchParams.get('email');
   const [email, setEmail] = useState('');
   const router = useRouter();
   const [verificationCode, setVerficationCode] = useState('');

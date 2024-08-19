@@ -17,6 +17,7 @@ import { signOut, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { ProfileAvatar } from './ProfileAvatar';
 import { Button } from './ui/button';
+import axios from 'axios';
 
 export function ProfileComponent() {
   const session = useSession();
@@ -57,6 +58,10 @@ export function ProfileComponent() {
                     className="cursor-pointer"
                     onClick={async () => {
                       await signOut();
+                      await axios.get(
+                        `${process.env.NEXT_PUBLIC_WEBSOCKT_BASE_URL}/auth/signout`,
+                        { withCredentials: true }
+                      );
                       router.push('/signin');
                     }}
                   >

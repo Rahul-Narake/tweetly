@@ -13,3 +13,15 @@ export function getUserId(path: string) {
   const numbers = numbersArray.map(Number);
   return numbers[0];
 }
+
+export function extractTime(dateString: Date) {
+  const date = new Date(dateString);
+  const hours = padZero(date.getHours());
+  const minutes = padZero(date.getMinutes());
+  return `${hours}:${minutes}`;
+}
+
+// Helper function to pad single-digit numbers with a leading zero
+function padZero(number: number) {
+  return number.toString().padStart(2, '0');
+}

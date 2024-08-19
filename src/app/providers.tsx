@@ -1,5 +1,7 @@
 'use client';
 import { ThemeProvider } from '@/components/theme-provider';
+import AuthContextProvider from '@/context/AuthContextProvider';
+import SocketContextProvider from '@/context/SocketContext';
 import { SessionProvider } from 'next-auth/react';
 import { RecoilRoot } from 'recoil';
 export const Provider = ({ children }: { children: React.ReactNode }) => {
@@ -11,7 +13,9 @@ export const Provider = ({ children }: { children: React.ReactNode }) => {
       disableTransitionOnChange
     >
       <SessionProvider>
-        <RecoilRoot>{children}</RecoilRoot>
+        <RecoilRoot>
+          <AuthContextProvider>{children}</AuthContextProvider>
+        </RecoilRoot>
       </SessionProvider>
     </ThemeProvider>
   );

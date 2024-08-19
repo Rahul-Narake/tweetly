@@ -2,7 +2,7 @@
 import { CurrentUser } from '@/store/atoms/post';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '../auth';
-import prisma from '@/db';
+import prisma from '@repo/db/client';
 
 export async function getCurrentUser(): Promise<CurrentUser | null> {
   try {

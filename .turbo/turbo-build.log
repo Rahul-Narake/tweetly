@@ -1,0 +1,160 @@
+[?25l[2J[m[H]0;npm[?25h]0;npm prefix]0;npm]0;npm run build[?25l
+> twitter@0.1.0 build
+> next build[5;1H[?25h]0;C:\WINDOWS\system32\cmd.exe [?25l  [38;2;173;127;168m[1m ▲ Next.js 14.1.4[m
+   - Environments: .env[8;1H[?25h [37m[1m [m Creating an optimized production build ...
+ [32m[1m✓[m Compiled successfully
+ [37m[1m [m Linting and checking validity of types  [36m.[?25l[m [37m[1m [m Linting and checking validity of types  [36m..[K[130C[m [37m[1m [m Linting and checking validity of types  [36m...[K[129C[m [37m[1m [m Linting and checking validity of types  [36m.[K[131C[m [37m[1m [m Linting and checking validity of types  [36m..[K[130C[m [37m[1m [m Linting and checking validity of types  [36m...[K[129C[m [37m[1m [m Linting and checking validity of types  [36m.[K[131C[m [37m[1m [m Linting and checking validity of types  [36m..[K[130C[m [37m[1m [m Linting and checking validity of types  [36m...[K[129C[m [37m[1m [m Linting and checking validity of types  [36m.[K[131C[m [37m[1m [m Linting and checking validity of types  [36m..[K[130C[m [37m[1m [m Linting and checking validity of types  [36m...[K[129C[m [37m[1m [m Linting and checking validity of types  [36m.[K[131C[m [37m[1m [m Linting and checking validity of types  [36m..[K[130C[m [37m[1m [m Linting and checking validity of types  [36m...[K[129C[m [37m[1m [m Linting and checking validity of types  [36m.[K[131C[m [37m[1m [m Linting and checking validity of types  [36m..[K[130C[m [37m[1m [m Linting and checking validity of types  [36m...[K[129C[m [37m[1m [m Linting and checking validity of types  [36m.[K[131C[m [37m[1m [m Linting and checking validity of types  [36m..[K[130C[m [37m[1m [m Linting and checking validity of types  [36m...[K[129C[m [37m[1m [m Linting and checking validity of types  [36m.[K[131C[m [37m[1m [m Linting and checking validity of types  [36m..[K[130C[m [37m[1m [m Linting and checking validity of types  [36m...[K[129C[m [37m[1m [m Linting and checking validity of types  [36m.[K[131C[m [37m[1m [m Linting and checking validity of types  [36m..[K[130C[m [37m[1m [m Linting and checking validity of types  [36m...[K[129C[m [37m[1m [m Linting and checking validity of types  [36m.[K[131C[m [37m[1m [m Linting and checking validity of types  [36m..[K[130C[m [37m[1m [m Linting and checking validity of types  [36m...[K[129C[m [37m[1m [m Linting and checking validity of types  [36m.[K[131C[m [37m[1m [m Linting and checking validity of types  [36m..[K[130C[m [37m[1m [m Linting and checking validity of types  [36m...[K[129C[m [37m[1m [m Linting and checking validity of types  [36m.[K[131C[m [37m[1m [m Linting and checking validity of types  [36m..[K[130C[m [37m[1m [m Linting and checking validity of types  [36m...[K[129C[m [37m[1m [m Linting and checking validity of types  [36m.[K[131C[m [37m[1m [m Linting and checking validity of types  [36m..[K[130C[m [37m[1m [m Linting and checking validity of types  [36m...[K[129C[m [37m[1m [m Linting and checking validity of types  [36m.[K[131C[m [37m[1m [m Linting and checking validity of types  [36m..[K[130C[m [37m[1m [m Linting and checking validity of types  [36m...[K[129C[m [37m[1m [m Linting and checking validity of types  [36m.[K[131C[m [37m[1m [m Linting and checking validity of types  [36m..[K[130C[m [37m[1m [m Linting and checking validity of types  [36m...[K[129C[m [37m[1m [m Linting and checking validity of types  [36m.[K[131C[m [37m[1m [m Linting and checking validity of types  [36m..[K[130C[m [37m[1m [m Linting and checking validity of types  [36m...[K[129C[m [37m[1m [m Linting and checking validity of types  [36m.[K[131C[m [37m[1m [m Linting and checking validity of types  [36m..[K[130C[m [37m[1m [m Linting and checking validity of types  [36m...[K[129C[m [37m[1m [m Linting and checking validity of types  [36m.[K[131C[m [37m[1m [m Linting and checking validity of types  [36m..[K[130C[m [37m[1m [m Linting and checking validity of types  [36m...[K[129C[m [37m[1m [m Linting and checking validity of types  [36m.[K[131C[m [37m[1m [m Linting and checking validity of types  [36m..[K[130C[m [37m[1m [m Linting and checking validity of types  [36m...[K[129C[m [37m[1m [m Linting and checking validity of types  [36m.[K[131C[m [37m[1m [m Linting and checking validity of types  [36m..[K[130C[m [37m[1m [m Linting and checking validity of types  [36m...[K[129C[m [37m[1m [m Linting and checking validity of types  [36m.[K[131C[m [37m[1m [m Linting and checking validity of types  [36m..[K[130C[m [37m[1m [m Linting and checking validity of types  [36m...[K[129C[m [37m[1m [m Linting and checking validity of types  [36m.[K[131C[m [37m[1m [m Linting and checking validity of types  [36m..[K[130C[m [37m[1m [m Linting and checking validity of types  [36m...[K[129C[m [37m[1m [m Linting and checking validity of types  [36m.[K[131C[m [37m[1m [m Linting and checking validity of types  [36m..[K[130C[m [37m[1m [m Linting and checking validity of types  [36m...[K[129C[m [37m[1m [m Linting and checking validity of types  [36m.[K[131C[m [37m[1m [m Linting and checking validity of types  [36m..[K[130C[m [37m[1m [m Linting and checking validity of types  [36m...[K[129C[m [37m[1m [m Linting and checking validity of types  [36m.[K[131C[m [37m[1m [m Linting and checking validity of types  [36m..[K[130C[m [37m[1m [m Linting and checking validity of types  [36m...[K[129C[m [37m[1m [m Linting and checking validity of types  [36m.[K[131C[m [37m[1m [m Linting and checking validity of types  [36m..[K[130C[m [37m[1m [m Linting and checking validity of types  [36m...[K[129C[m [37m[1m [m Linting and checking validity of types  [36m.[K[131C[m [37m[1m [m Linting and checking validity of types  [36m..[K[130C[m [37m[1m [m Linting and checking validity of types  [36m...[K[129C[m [37m[1m [m Linting and checking validity of types  [36m.[K[131C[m [37m[1m [m Linting and checking validity of types  [36m..[K[130C[m [37m[1m [m Linting and checking validity of types  [36m...[K[129C[m [37m[1m [m Linting and checking validity of types  [36m.[K[131C[m [37m[1m [m Linting and checking validity of types  [36m..[K[130C[m [37m[1m [m Linting and checking validity of types  [36m...[K[129C[m [37m[1m [m Linting and checking validity of types  [36m.[K[131C[m [37m[1m [m Linting and checking validity of types  [36m..[K[130C[m [37m[1m [m Linting and checking validity of types  [36m...[K[129C[m [37m[1m [m Linting and checking validity of types  [36m.[K[131C[m [37m[1m [m Linting and checking validity of types  [36m..[K[130C[m [37m[1m [m Linting and checking validity of types  [36m...[K[129C[m[K[?25h
+[36m./src/components/Comments.tsx[m
+[33m75[m:[33m6  [1mWarning[m: React Hook useEffect has a missing dependency: 'fetchComments'. Either include it or remove the dependency array.  [90m[1mreact-hooks/exhaustive-deps[m[K
+
+[36m./src/components/ComposePost.tsx[m
+[33m173[m:[33m15  [1mWarning[m: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur a
+[9;175Hadditional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  [90m[1m@next/next/no-img-element[m[K
+
+[36m./src/components/EditProfile.tsx[m
+[33m54[m:[33m6  [1mWarning[m: React Hook useEffect has missing dependencies: 'currentUser' and 'user'. Either include them or remove the dependency array.  [90m[1mreact-hooks/exhaustive-deps[m       [10;1H
+
+[36m./src/components/EditProfileImage.tsx[m
+[33m95[m:[33m13  [1mWarning[m: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur ad
+[9;175Hdditional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  [90m[1m@next/next/no-img-element[m[K
+
+[36m./src/components/Following.tsx[m
+[33m28[m:[33m6  [1mWarning[m: React Hook useEffect has a missing dependency: 'getAllPosts'. Either include it or remove the dependency array.  [90m[1mreact-hooks/exhaustive-deps[m[K
+
+[36m./src/components/FollowUnfollowButton.tsx[m
+[33m32[m:[33m6  [1mWarning[m: React Hook useEffect has a missing dependency: 'isFollowing'. Either include it or remove the dependency array.  [90m[1mreact-hooks/exhaustive-deps[m[K
+
+[36m./src/components/ForYou.tsx[m
+[33m28[m:[33m6  [1mWarning[m: React Hook useEffect has a missing dependency: 'getAllPosts'. Either include it or remove the dependency array.  [90m[1mreact-hooks/exhaustive-deps[m[K
+
+[36m./src/components/InfiniteScrollOnProfile.tsx[m
+[33m42[m:[33m6  [1mWarning[m: React Hook useEffect has missing dependencies: 'getTotalPosts', 'initialPosts', and 'setPosts'. Either include them or remove the dependency array.  [90m[1mreact-hooks[m
+[90m[1m[9;175Hs/exhaustive-deps[22m[K[m
+[33m48[m:[33m6  [1mWarning[m: React Hook useEffect has missing dependencies: 'loadMorePosts', 'posts.length', and 'totalPosts'. Either include them or remove the dependency array.  [90m[1mreact-hoo[m
+[90m[1m[9;175Hoks/exhaustive-deps[22m[K[m
+
+[36m./src/components/InfiniteScrollPosts.tsx[m
+[33m41[m:[33m6  [1mWarning[m: React Hook useEffect has missing dependencies: 'initialPosts' and 'setPosts'. Either include them or remove the dependency array.  [90m[1mreact-hooks/exhaustive-deps[m  [10;1H
+[33m45[m:[33m6  [1mWarning[m: React Hook useEffect has a missing dependency: 'loadMorePosts'. Either include it or remove the dependency array.  [90m[1mreact-hooks/exhaustive-deps[m[K
+
+[36m./src/components/Messages/SearchBar.tsx[m
+[33m29[m:[33m6  [1mWarning[m: React Hook useEffect has a missing dependency: 'getSearchResult'. Either include it or remove the dependency array.  [90m[1mreact-hooks/exhaustive-deps[m[K
+[33m36[m:[33m6  [1mWarning[m: React Hook useEffect has a missing dependency: 'setIsSearching'. Either include it or remove the dependency array.  [90m[1mreact-hooks/exhaustive-deps[m[K
+
+[36m./src/components/PostComponent.tsx[m
+[33m25[m:[33m6  [1mWarning[m: React Hook useEffect has missing dependencies: 'post' and 'setCurrentSelectedPost'. Either include them or remove the dependency array.  [90m[1mreact-hooks/exhaustive-[m
+[90m[1m[9;175H-deps[22m[K[m
+
+[36m./src/components/PostContent.tsx[m
+[33m36[m:[33m11  [1mWarning[m: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur ad
+[9;175Hdditional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  [90m[1m@next/next/no-img-element[m[K
+
+[36m./src/components/PostFooter.tsx[m
+[33m38[m:[33m6  [1mWarning[m: React Hook useCallback has missing dependencies: 'isLiked', 'likesCount', 'post?.id', and 'setPosts'. Either include them or remove the dependency array.  [90m[1mreact[m
+[90m[1m[9;175Ht-hooks/exhaustive-deps[22m[K[m
+[33m53[m:[33m6  [1mWarning[m: React Hook useCallback has missing dependencies: 'isBookmarked', 'post?.id', and 'setPosts'. Either include them or remove the dependency array.  [90m[1mreact-hooks/ex[m
+[90m[1m[9;175Hxhaustive-deps[22m[K[m
+
+[36m./src/components/PostsList.tsx[m
+[33m14[m:[33m6  [1mWarning[m: React Hook useEffect has missing dependencies: 'posts' and 'setForYouPosts'. Either include them or remove the dependency array.  [90m[1mreact-hooks/exhaustive-deps[m   [10;1H
+
+[36m./src/components/ProfileImage.tsx[m
+[33m327[m:[33m6  [1mWarning[m: React Hook useEffect has missing dependencies: 'currentUserInfo', 'setCurrentSelectedUser', 'setCurrentUser', and 'userInfo'. Either include them or remove the
+[9;175He dependency array.  [90m[1mreact-hooks/exhaustive-deps[m[K
+
+[36m./src/components/SearchComponent.tsx[m
+[33m24[m:[33m6  [1mWarning[m: React Hook useEffect has a missing dependency: 'getSearchResult'. Either include it or remove the dependency array.  [90m[1mreact-hooks/exhaustive-deps[m[K
+
+[36m./src/components/SelectedPostFooter.tsx[m
+[33m30[m:[33m6  [1mWarning[m: React Hook useCallback has a missing dependency: 'setSelectedPost'. Either include it or remove the dependency array.  [90m[1mreact-hooks/exhaustive-deps[m[K
+[33m47[m:[33m6  [1mWarning[m: React Hook useCallback has a missing dependency: 'setSelectedPost'. Either include it or remove the dependency array.  [90m[1mreact-hooks/exhaustive-deps[m[K
+
+[36m./src/components/signup.tsx[m
+[33m29[m:[33m5  [1mWarning[m: React Hook useCallback has an unnecessary dependency: 'month'. Either exclude it or remove the dependency array.  [90m[1mreact-hooks/exhaustive-deps[m[K
+[33m35[m:[33m5  [1mWarning[m: React Hook useCallback has an unnecessary dependency: 'year'. Either exclude it or remove the dependency array.  [90m[1mreact-hooks/exhaustive-deps[m[K
+[33m41[m:[33m5  [1mWarning[m: React Hook useCallback has an unnecessary dependency: 'day'. Either exclude it or remove the dependency array.  [90m[1mreact-hooks/exhaustive-deps[m[K
+
+[36m./src/context/AuthContextProvider.tsx[m
+[33m34[m:[33m6  [1mWarning[m: React Hook useEffect has missing dependencies: 'setCurrentUser' and 'status'. Either include them or remove the dependency array.  [90m[1mreact-hooks/exhaustive-deps[m  [10;1H
+
+[36m./src/context/SocketContext.tsx[m
+[33m42[m:[33m6  [1mWarning[m: React Hook useEffect has a missing dependency: 'currentUser'. Either include it or remove the dependency array.  [90m[1mreact-hooks/exhaustive-deps[m[K
+
+[36m./src/hooks/useConversations.ts[m
+[33m34[m:[33m6  [1mWarning[m: React Hook useEffect has a missing dependency: 'setToatlConversations'. Either include it or remove the dependency array.  [90m[1mreact-hooks/exhaustive-deps[m[K
+
+[36m./src/hooks/useGetMessages.tsx[m
+[33m41[m:[33m6  [1mWarning[m: React Hook useEffect has missing dependencies: 'setMessages' and 'setSelectedConversation'. Either include them or remove the dependency array.  [90m[1mreact-hooks/exh[m
+[90m[1m[9;175Hhaustive-deps[22m[K[m
+
+[36m./src/hooks/useListenMessages.tsx[m
+[33m37[m:[33m6  [1mWarning[m: React Hook useEffect has missing dependencies: 'setMessages' and 'setSelectedConversation'. Either include them or remove the dependency array.  [90m[1mreact-hooks/exh[m
+[90m[1m[9;175Hhaustive-deps[22m[K[m
+
+[36m./src/hooks/useSelectedConversation.ts[m
+[33m36[m:[33m6  [1mWarning[m: React Hook useEffect has missing dependencies: 'selectedUser' and 'setSelectedConversation'. Either include them or remove the dependency array.  [90m[1mreact-hooks/ex[m
+[90m[1m[9;175Hxhaustive-deps[22m[K[m
+
+[36m./src/hooks/useSigninToWS.ts[m
+[33m20[m:[33m6  [1mWarning[m: React Hook useEffect has a missing dependency: 'session'. Either include it or remove the dependency array.  [90m[1mreact-hooks/exhaustive-deps[m[K
+
+[36minfo  [m- Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules[K
+ [32m[1m✓[m Linting and checking validity of types[K
+ [37m[1m [m Collecting page data  [36m.[K[?25l[149C[m [37m[1m [m Collecting page data  [36m..[K[148C[m [37m[1m [m Collecting page data  [36m...[K[147C[m [37m[1m [m Collecting page data  [36m.[K[149C[m [37m[1m [m Collecting page data  [36m..[K[148C[m [37m[1m [m Collecting page data  [36m...[K[147C[m [37m[1m [m Collecting page data  [36m.[K[149C[m [37m[1m [m Collecting page data  [36m..[K[148C[m [37m[1m [m Collecting page data  [36m...[K[147C[m [37m[1m [m Collecting page data  [36m.[K[149C[m [37m[1m [m Collecting page data  [36m..[K[148C[m [37m[1m [m Collecting page data  [36m...[K[147C[m [37m[1m [m Collecting page data  [36m.[K[149C[m [37m[1m [m Collecting page data  [36m..[K[148C[m [37m[1m [m Collecting page data  [36m...[K[147C[m [37m[1m [m Collecting page data  [36m.[K[149C[m [37m[1m [m Collecting page data  [36m..[K[148C[m [37m[1m [m Collecting page data  [36m...[K[147C[m [32m[1m✓[m Collecting page data[K[?25h
+ [37m[1m [m Generating static pages (0/24)  [36m[    ][?25l[m[K[175C [37m[1m [m Generating static pages (0/24)  [36m[=   ][m[K[175C [37m[1m [m Generating static pages (7/24)  [36m[==  ] [m
+[175C[K[175C[9;1H[K[175C [37m[1m [m Generating static pages (12/24) [36m[=== ] [m
+[K[175C[9;1H[K[175C [37m[1m [m Generating static pages (19/24) [36m[ ===] [m
+[K[175C[9;1H[K[175C[?25h [32m[1m✓[m Generating static pages (24/24) 
+[?25l [37m[1m [m Finalizing page optimization  [36m.[m [37m[1m [m Collecting build traces  [36m.[m[K[175C[K[175C [37m[1m [m Collecting build traces  [36m..[m [37m[1m [m Collecting build traces  [36m...[K[144C[m[K[175C [37m[1m [m Finalizing page optimization  [36m.[m [37m[1m [m Collecting build traces  [36m.[K[146C[m [37m[1m [m Finalizing page optimization  [36m..[K[140C[m [37m[1m [m Collecting build traces  [36m..[K[145C[m [37m[1m [m Finalizing page optimization  [36m...[K[139C[m [37m[1m [m Collecting build traces  [36m...[K[144C[m [37m[1m [m Finalizing page optimization  [36m.[K[141C[m [37m[1m [m Collecting build traces  [36m.[K[146C[m [37m[1m [m Collecting build traces  [36m..[K[145C[m [37m[1m [m Collecting build traces  [36m...[K[144C[m [37m[1m [m Collecting build traces  [36m.[K[146C[m [37m[1m [m Collecting build traces  [36m..[K[145C[m [37m[1m [m Collecting build traces  [36m...[K[144C[m [37m[1m [m Collecting build traces  [36m.[K[146C[m [37m[1m [m Collecting build traces  [36m..[K[145C[m [37m[1m [m Collecting build traces  [36m...[K[144C[m [37m[1m [m Collecting build traces  [36m.[K[146C[m [37m[1m [m Collecting build traces  [36m..[K[145C[m [37m[1m [m Collecting build traces  [36m...[K[144C[m [37m[1m [m Collecting build traces  [36m.[K[146C[m [37m[1m [m Collecting build traces  [36m..[K[145C[m [37m[1m [m Collecting build traces  [36m...[K[144C[m [37m[1m [m Collecting build traces  [36m.[K[146C[m [37m[1m [m Collecting build traces  [36m..[K[145C[m [37m[1m [m Collecting build traces  [36m...[K[144C[m [37m[1m [m Collecting build traces  [36m.[K[146C[m [37m[1m [m Collecting build traces  [36m..[K[145C[m [37m[1m [m Collecting build traces  [36m...[K[144C[m [32m[1m✓[m Collecting build traces[K[?25h
+ [32m[1m✓[m Finalizing page optimization[K
+
+[4mRoute (app)[24m[30X[4m[30CSize[24m     [4mFirst Load JS[24m[K
+┌ λ /                                    169 B[37m[1m[10C84.6 kB[m[K
+├ ○ /_not-found                          890 B[37m[1m[10C85.3 kB[m[K
+├ λ /[userId]                            169 B[37m[1m[10C84.6 kB[m[K
+├ λ /[userId]/followers                  2.23 kB[37m[1m[10C94 kB[m[K
+├ λ /[userId]/followings                 2.23 kB[37m[1m[10C94 kB[m[K
+├ λ /[userId]/likes                      169 B[37m[1m[10C84.6 kB[m[K
+├ λ /[userId]/posts                      169 B[37m[1m[10C84.6 kB[m[K
+├ λ /[userId]/replies                    169 B[37m[1m[10C84.6 kB[m[K
+├ λ /api/auth/[...nextauth]              0 B[37m[1m[16C0 B[m[K
+├ λ /api/post                            0 B[37m[1m[16C0 B[m[K
+├ λ /api/post/bookmark/[postId]          0 B[37m[1m[16C0 B[m[K
+├ λ /api/post/comment/[postId]           0 B[37m[1m[16C0 B[m[K
+├ λ /api/post/following                  0 B[37m[1m[16C0 B[m[K
+├ λ /api/post/like/[postId]              0 B[37m[1m[16C0 B[m[K
+├ λ /api/users/[userId]                  0 B[37m[1m[16C0 B[m[K
+├ ○ /api/users/current_user              0 B[37m[1m[16C0 B[m[K
+├ λ /api/users/generate                  0 B[37m[1m[16C0 B[m[K
+├ λ /api/users/signup                    0 B[37m[1m[16C0 B[m[K
+├ λ /api/users/verify                    0 B[37m[1m[16C0 B[m[K
+├ λ /explore                             3.58 kB        [37m[1m95.4 kB[m[K
+├ λ /grok                                1.6 kB[37m[1m[9C93.4 kB[m[K
+├ λ /lists                               1.6 kB[37m[1m[9C93.4 kB[m[K
+├ λ /messages                            169 B[37m[1m[10C84.6 kB[m[K
+├ λ /messages/[userId]                   154 B[37m[1m[11C153 kB[m[K
+├ λ /messages/user/[id]                  153 B[37m[1m[11C153 kB[m[K
+├ λ /more                                1.6 kB[37m[1m[9C93.4 kB[m[K
+├ λ /notifications                       1.6 kB[37m[1m[9C93.4 kB[m[K
+├ λ /posts/following                     1.28 kB[37m[1m[9C162 kB[m[K
+├ λ /posts/for_you                       3.4 kB[37m[1m[10C165 kB[m[K
+├ λ /premium                             1.6 kB[37m[1m[9C93.4 kB[m[K
+├ λ /profile                             169 B[37m[1m[10C84.6 kB[m[K
+├ λ /profile/[userId]                    169 B[37m[1m[10C84.6 kB[m[K
+├ λ /profile/[userId]/likes              1.28 kB[37m[1m[9C162 kB[m[K
+├ λ /profile/[userId]/posts              3.48 kB[37m[1m[9C165 kB[m[K
+├ λ /profile/[userId]/replies            1.28 kB[37m[1m[9C162 kB[m[K
+├ λ /signin                              3.78 kB[37m[1m[9C113 kB[m[K
+├ ○ /signup                              11.8 kB[37m[1m[9C152 kB[m[K
+├ ○ /signup/password                     2.96 kB[37m[1m[9C103 kB[m[K
+├ λ /status/[postId]                     2.08 kB[37m[1m[9C163 kB[m[K
+└ ○ /verify-otp                          3.02 kB[37m[1m[9C124 kB[m[K
++ First Load JS shared by all[37m[1m[12C84.4 kB[m[K
+  ├ chunks/8069-9bade029417167ba.js      29.1 kB
+  ├ chunks/fd9d1056-6713456634fe344a.js  53.4 kB
+  └ other shared chunks (total)          1.96 kB
+
+
+○  (Static)   prerendered as static content
+λ  (Dynamic)  server-rendered on demand using Node.js
+

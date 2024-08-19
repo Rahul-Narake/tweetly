@@ -1,5 +1,5 @@
 'use server';
-import prisma from '@/db';
+import prisma from '@repo/db/client';
 import bcrypt from 'bcrypt';
 export async function savePassword({
   email,

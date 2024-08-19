@@ -17,37 +17,49 @@ export function Signin() {
   const router = useRouter();
   const email = useRef('');
   const password = useRef('');
+
   function togglePasswordVisibility() {
     setIsPasswordVisible((prevState: any) => !prevState);
   }
 
-  const handleSubmit = async (e?: React.FocusEvent<HTMLButtonElement>) => {
+  const handleSubmit = async (e?: React.FormEvent<HTMLButtonElement>) => {
     if (e) {
       e.preventDefault();
     }
-    if (!email.current || !password.current) {
-      setRequiredError({
-        emailReq: email.current ? false : true,
-        passReq: password.current ? false : true,
+    try {
+      if (!email.current || !password.current) {
+        setRequiredError({
+          emailReq: email.current ? false : true,
+          passReq: password.current ? false : true,
+        });
+        return;
+      }
+      setLoading(true);
+      const res = await signIn('credentials', {
+        username: email.current,
+        password: password.current,
+        redirect: false,
       });
-      return;
-    }
-    setLoading(true);
-    const res = await signIn('credentials', {
-      username: email.current,
-      password: password.current,
-      redirect: false,
-    });
-    setLoading(false);
-    if (!res?.error) {
-      router.push('/posts/for_you');
-    } else {
+
+      if (!res?.error) {
+        router.push('/');
+      } else {
+        toast('Error Signing in', {
+          action: {
+            label: 'Close',
+            onClick: () => toast.dismiss(),
+          },
+        });
+      }
+    } catch (error) {
       toast('Error Signing in', {
         action: {
           label: 'Close',
           onClick: () => toast.dismiss(),
         },
       });
+    } finally {
+      setLoading(false);
     }
   };
   return (

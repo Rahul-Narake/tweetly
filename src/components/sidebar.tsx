@@ -10,7 +10,6 @@ import {
   X,
 } from 'lucide-react';
 import { SidebarComponent } from './sidebarcomponent';
-import { Logo } from './logo';
 import { ComposePostButton } from './ComposePostButton';
 import { ProfileComponent } from './ProfileInfo';
 import { getServerSession } from 'next-auth';

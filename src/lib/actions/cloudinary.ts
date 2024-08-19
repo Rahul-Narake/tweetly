@@ -1,5 +1,5 @@
 'use server';
-import prisma from '@/db';
+import prisma from '@repo/db/client';
 import { v2 as cloudinary } from 'cloudinary';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '../auth';

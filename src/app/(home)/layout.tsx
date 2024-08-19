@@ -14,7 +14,7 @@ export default async function HomeLayout({
     redirect('/api/auth/signin');
   }
   return (
-    <div className="grid md:grid-cols-12 grid-cols-1 h-screen w-full">
+    <div className="grid md:grid-cols-12 grid-cols-1 h-screen w-full overflow-y-scroll">
       <div className="md:flex md:col-span-2 md:col-start-2 hidden pt-2">
         <Sidebar />
       </div>
